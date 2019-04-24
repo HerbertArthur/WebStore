@@ -7,7 +7,7 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -106,7 +106,7 @@
       sex, mail, phone, address
       )
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}
+      #{sex,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.User" >
@@ -151,7 +151,7 @@
         #{mail,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -183,7 +183,7 @@
         mail = #{record.mail,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
@@ -200,7 +200,7 @@
       password = #{record.password,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=INTEGER},
       mail = #{record.mail,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -222,7 +222,7 @@
         mail = #{mail,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -236,7 +236,7 @@
       password = #{password,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
       mail = #{mail,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>

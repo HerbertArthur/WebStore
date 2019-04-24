@@ -11,7 +11,7 @@ public class User {
 
     private String mail;
 
-    private Integer phone;
+    private String phone;
 
     private String address;
 
@@ -55,11 +55,11 @@ public class User {
         this.mail = mail == null ? null : mail.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

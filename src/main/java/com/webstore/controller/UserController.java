@@ -1,13 +1,17 @@
 package com.webstore.controller;
 
 
+import com.webstore.domain.SystemicInfo;
 import com.webstore.domain.User;
 import com.webstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,24 +23,38 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping("/userRegister")
-    public ModelAndView userRegister(User user){
-        User user1 = new User();
-        user1.setUserName("马");
-        user1.setPassword("123456");
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String formatDate = simpleDateFormat.format(date);
-        ModelAndView modelAndView = new ModelAndView();
-        try {
-            userService.addOneUser(user1);
-            modelAndView.addObject(null);
-            modelAndView.setViewName("");
-            return modelAndView;
-        } catch (Exception e) {
-            e.printStackTrace();
+    @ResponseBody
+    @RequestMapping("/userLogin")
+    public SystemicInfo userLogin(String username, String password, HttpServletRequest request){
+        User user = userService.userLogin(username, password);
+        SystemicInfo systemicInfo = new SystemicInfo();
+        if (user != null) {
+            request.getSession().setAttribute("user", user);
+            systemicInfo.setMsg("登录成功...");
+            systemicInfo.setStatus(200);
+            systemicInfo.setRedirectUrl("");
+        } else {
+            systemicInfo.setMsg("用户名或密码错误...");
+            systemicInfo.setStatus(500);
+            systemicInfo.setRedirectUrl("/login.jsp");
         }
-        return modelAndView;
+        return systemicInfo;
+    }
+
+    @ResponseBody
+    @RequestMapping("/userRegister")
+    public SystemicInfo userRegister(String username, String password, String phone){
+        SystemicInfo systemicInfo = new SystemicInfo();
+        User user = new User();
+        user.setUserName(username);
+        user.setPassword(password);
+        user.setPhone(phone);
+        try{
+            userService.userRegister(user);
+            systemicInfo.setStatus(200);
+        } catch (Exception e){
+            systemicInfo.setStatus(500);
+        }
+        return systemicInfo;
     }
 }

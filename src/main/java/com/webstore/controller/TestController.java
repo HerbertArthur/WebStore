@@ -9,7 +9,7 @@ public class TestController {
 
     @RequestMapping("/abc")
     public String test1(){
-        return "login";
+        return "/login.jsp";
     }
 
 }

@@ -28,7 +28,6 @@ public class UserController {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String formatDate = simpleDateFormat.format(date);
-        user1.setBirthday(date);
         ModelAndView modelAndView = new ModelAndView();
         try {
             userService.addOneUser(user1);

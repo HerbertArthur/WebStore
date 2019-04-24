@@ -1,7 +1,7 @@
-package com.jt.dao;
+package com.webstore.dao;
 
-import com.jt.entity.Item;
-import com.jt.entity.ItemExample;
+import com.webstore.domain.Item;
+import com.webstore.domain.ItemExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

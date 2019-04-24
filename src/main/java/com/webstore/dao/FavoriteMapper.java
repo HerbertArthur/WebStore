@@ -1,7 +1,7 @@
-package com.jt.dao;
+package com.webstore.dao;
 
-import com.jt.entity.Favorite;
-import com.jt.entity.FavoriteExample;
+import com.webstore.domain.Favorite;
+import com.webstore.domain.FavoriteExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

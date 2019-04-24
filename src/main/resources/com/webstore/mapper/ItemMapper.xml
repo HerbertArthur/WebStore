@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jt.dao.ItemMapper" >
-  <resultMap id="BaseResultMap" type="com.jt.entity.Item" >
+<mapper namespace="com.webstore.dao.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.webstore.domain.Item" >
     <id column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="INTEGER" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     item_id, item_name, price
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jt.entity.ItemExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.ItemExample" >
     select
     <if test="distinct" >
       distinct
@@ -91,19 +91,19 @@
     delete from item
     where item_id = #{itemId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jt.entity.ItemExample" >
+  <delete id="deleteByExample" parameterType="com.webstore.domain.ItemExample" >
     delete from item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jt.entity.Item" >
+  <insert id="insert" parameterType="com.webstore.domain.Item" >
     insert into item (item_id, item_name, price
       )
     values (#{itemId,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jt.entity.Item" >
+  <insert id="insertSelective" parameterType="com.webstore.domain.Item" >
     insert into item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="itemId != null" >
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jt.entity.ItemExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.webstore.domain.ItemExample" resultType="java.lang.Integer" >
     select count(*) from item
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jt.entity.Item" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Item" >
     update item
     <set >
       <if test="itemName != null" >
@@ -172,7 +172,7 @@
     </set>
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jt.entity.Item" >
+  <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Item" >
     update item
     set item_name = #{itemName,jdbcType=VARCHAR},
       price = #{price,jdbcType=INTEGER}

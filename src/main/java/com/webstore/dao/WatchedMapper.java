@@ -1,7 +1,7 @@
-package com.jt.dao;
+package com.webstore.dao;
 
-import com.jt.entity.Watched;
-import com.jt.entity.WatchedExample;
+import com.webstore.domain.Watched;
+import com.webstore.domain.WatchedExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

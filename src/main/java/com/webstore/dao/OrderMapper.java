@@ -1,7 +1,7 @@
-package com.jt.dao;
+package com.webstore.dao;
 
-import com.jt.entity.Order;
-import com.jt.entity.OrderExample;
+import com.webstore.domain.Order;
+import com.webstore.domain.OrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

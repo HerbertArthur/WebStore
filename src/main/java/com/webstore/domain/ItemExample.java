@@ -1,4 +1,4 @@
-package com.jt.entity;
+package com.webstore.domain;
 
 import java.util.ArrayList;
 import java.util.List;

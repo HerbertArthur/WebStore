@@ -1,4 +1,4 @@
-package com.jt.entity;
+package com.webstore.domain;
 
 public class Item {
     private Integer itemId;

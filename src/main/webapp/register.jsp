@@ -82,7 +82,7 @@
             <li class="regPl88">
 			<span  class="regM" style="margin-left:29px">
 				<input id="AgreeId" name="AgreeId" type="checkbox" checked="" onclick="ckAgree();">
-				<a href="https://passport.e3mall.cn/xy.html" target="_blank"  class="checkTitle">我已阅读并同意<font style="font-size:12px;">《宜立方商城用户注册协议》</font></a>
+				<a href="https://passport.e3mall.cn/xy.html" target="_blank"  class="checkTitle">我已阅读并同意<font style="font-size:12px;">《CAUC商城用户注册协议》</font></a>
 			</span>
                 <span  id="AgreeIdErr" ></span>
             </li>

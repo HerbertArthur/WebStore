@@ -19,18 +19,15 @@
       	<a href="/register.jsp">免费注册</a>
       </li>
       <!--<li id='qiyeLogin'><a href='http://www.sfme.me/login.jhtml' target='_blank' rel='nofollow'>员工福利</a></li>-->
-      <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="http://home.e3mall.cn/myorder/index/" rel="nofollow">我的订单</a></li>
+      <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="#" rel="nofollow">我的订单</a></li>
       <li class="menus">
         <a name="sfbest_hp_hp_head_home1" href="http://home.e3mall.cn/my/index/" rel="nofollow" class="trackref t">我的优选</a><b></b>
         <span class="outline"></span>
         <span class="blank"></span>
         <div class="dd">
-          <div><a name="sfbest_hp_hp_head_home2" class="trackref" href="http://home.e3mall.cn/myorder/index/" rel="nofollow">我的订单</a></div>
-          <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="http://home.e3mall.cn/my/points/" rel="nofollow">我的积分</a></div>
-          <div><a name="sfbest_hp_hp_head_home3" class="trackref" href="http://home.e3mall.cn/favorites/index/" rel="nofollow">我的收藏</a></div>
-          <!-- <div><a href="http://home.e3mall.cn/my/balance/" rel="nofollow">账户余额</a></div> -->
-          <div><a href="http://home.e3mall.cn/giftcard/list/" rel="nofollow">我的优选卡</a></div>
-          <div><a href="http://home.e3mall.cn/usercoupon/list/" rel="nofollow">我的优惠券</a></div>
+          <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">我的收藏</a></div>
+          <div><a name="sfbest_hp_hp_head_home3" class="trackref" href="#" rel="nofollow">我的足迹</a></div>
+          <div><a href="#" rel="nofollow">我的购物车</a></div>
         </div>
       </li>
 	  <li class="d2 tShow"><s></s><q></q><a name="sfbest_hp_hp_head_app1" class="trackref" href="http://app.e3mall.cn/" target="_blank">移动客户端</a>

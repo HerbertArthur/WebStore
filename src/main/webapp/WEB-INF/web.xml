@@ -10,7 +10,7 @@
   <display-name>shopping01</display-name>
 
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- 编码过滤器 -->

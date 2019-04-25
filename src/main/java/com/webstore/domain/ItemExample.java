@@ -164,6 +164,76 @@ public class ItemExample {
             return (Criteria) this;
         }
 
+        public Criteria andItemCategoryIsNull() {
+            addCriterion("item_category is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryIsNotNull() {
+            addCriterion("item_category is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryEqualTo(String value) {
+            addCriterion("item_category =", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryNotEqualTo(String value) {
+            addCriterion("item_category <>", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryGreaterThan(String value) {
+            addCriterion("item_category >", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryGreaterThanOrEqualTo(String value) {
+            addCriterion("item_category >=", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryLessThan(String value) {
+            addCriterion("item_category <", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryLessThanOrEqualTo(String value) {
+            addCriterion("item_category <=", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryLike(String value) {
+            addCriterion("item_category like", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryNotLike(String value) {
+            addCriterion("item_category not like", value, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryIn(List<String> values) {
+            addCriterion("item_category in", values, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryNotIn(List<String> values) {
+            addCriterion("item_category not in", values, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryBetween(String value1, String value2) {
+            addCriterion("item_category between", value1, value2, "itemCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemCategoryNotBetween(String value1, String value2) {
+            addCriterion("item_category not between", value1, value2, "itemCategory");
+            return (Criteria) this;
+        }
+
         public Criteria andItemNameIsNull() {
             addCriterion("item_name is null");
             return (Criteria) this;
@@ -291,6 +361,76 @@ public class ItemExample {
 
         public Criteria andPriceNotBetween(Integer value1, Integer value2) {
             addCriterion("price not between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathIsNull() {
+            addCriterion("icon_path is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathIsNotNull() {
+            addCriterion("icon_path is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathEqualTo(String value) {
+            addCriterion("icon_path =", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathNotEqualTo(String value) {
+            addCriterion("icon_path <>", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathGreaterThan(String value) {
+            addCriterion("icon_path >", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathGreaterThanOrEqualTo(String value) {
+            addCriterion("icon_path >=", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathLessThan(String value) {
+            addCriterion("icon_path <", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathLessThanOrEqualTo(String value) {
+            addCriterion("icon_path <=", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathLike(String value) {
+            addCriterion("icon_path like", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathNotLike(String value) {
+            addCriterion("icon_path not like", value, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathIn(List<String> values) {
+            addCriterion("icon_path in", values, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathNotIn(List<String> values) {
+            addCriterion("icon_path not in", values, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathBetween(String value1, String value2) {
+            addCriterion("icon_path between", value1, value2, "iconPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andIconPathNotBetween(String value1, String value2) {
+            addCriterion("icon_path not between", value1, value2, "iconPath");
             return (Criteria) this;
         }
     }

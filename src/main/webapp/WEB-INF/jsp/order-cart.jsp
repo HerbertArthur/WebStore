@@ -27,7 +27,7 @@
 <script src="/js/order.js?v=20160713" type="text/javascript"></script>
 </head>	
 <body id="mainframe">
-<jsp:include page="jsp/commons/header.jsp" />
+<jsp:include page="commons/header.jsp" />
 <div class="orderMain">
 <form id="orderForm" class="hide" action="/order/create.html" method="post">
 	<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
@@ -191,6 +191,6 @@
   </div>
 </div>
 <!-- /main -->
-<jsp:include page="jsp/commons/footer.jsp" />
+<jsp:include page="commons/footer.jsp" />
 </body>
 </html>

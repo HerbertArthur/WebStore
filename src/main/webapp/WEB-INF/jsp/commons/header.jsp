@@ -21,7 +21,7 @@
       <div class="search_hot"><a target="_blank" href="#">大闸蟹</a><a target="_blank" href="#">石榴</a><a target="_blank" href="#">松茸</a><a target="_blank" href="#">牛排</a><a target="_blank" href="#">白虾</a><a target="_blank" href="#">全脂牛奶</a><a target="_blank" href="#">洋河</a><a target="_blank" href="#">绿豆</a><a target="_blank" href="#">一品玉</a></div>
     </div>
     <div class="shopingcar" id="topCart">
-      <s class="setCart"></s><a href="http://localhost:8080/cart.jsp" class="t" rel="nofollow">我的购物车</a><b id="cartNum">0</b>
+      <s class="setCart"></s><a href="http://localhost:8080/cart/cart.do" class="t" rel="nofollow">我的购物车</a><b id="cartNum">0</b>
       <span class="outline"></span>
       <span class="blank"></span>
       <div id="cart_lists">

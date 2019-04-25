@@ -26,7 +26,7 @@
 
    <title>我的购物车 - 爱Shopping商城</title>
 <body> 
-<jsp:include page="jsp/commons/header.jsp" />
+<jsp:include page="commons/header.jsp" />
 <div class="cartMain">
 	<div class="cartHead">
 		<h3 class="cartMy">我的购物车</h3>
@@ -123,7 +123,7 @@
     </div>
 </div>
 <!-- footer start -->
-<jsp:include page="jsp/commons/footer.jsp" />
+<jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
 
 </html>

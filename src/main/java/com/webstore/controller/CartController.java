@@ -22,6 +22,11 @@ public class CartController {
 		model.addAttribute("cartId", cartId);
 		return "cart";
 	}
+
+	@RequestMapping(value = "/cart")
+	public String cart() {
+		return "cart";
+	}
 	
 	
 }

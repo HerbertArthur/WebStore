@@ -38,7 +38,7 @@
                 <div class="dd">
                     <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">我的收藏</a></div>
                     <div><a name="sfbest_hp_hp_head_home3" class="trackref" href="#" rel="nofollow">我的足迹</a></div>
-                    <div><a href="#" rel="nofollow">我的购物车</a></div>
+                    <div><a href="http://localhost:8080/cart.jsp" rel="nofollow">我的购物车</a></div>
                 </div>
             </li>
 

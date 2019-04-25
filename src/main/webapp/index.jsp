@@ -115,18 +115,18 @@
 		        <li class="">5</li>
 		        <li class="">6</li>
 		        <li class="">7</li>
-		        <li class="">8</li> 
+		        <li class="">8</li>
 		      </ul>
       <div class="indexbg" id="indexbg">
       <dl style="left: -1903px;">
 	        <dd style="width: 1903px; background: rgb(20, 16, 13);"></dd>
 	        <dd style="width: 1903px; background: rgb(119, 96, 86);"></dd>
 	        <dd style="width: 1903px; background: rgb(17, 12, 55);"></dd>
-	        <dd style="width: 1903px; background: rgb(239, 244, 248);"></dd>
+	        <dd style="width: 1903px; background: rgb(62,198,106);"></dd>
 	        <dd style="width: 1903px; background: rgb(231, 32, 37);"></dd>
 	        <dd style="width: 1903px; background: rgb(128, 29, 92);"></dd>
 	        <dd style="width: 1903px; background: rgb(117, 144, 1);"></dd>
-	        <dd style="width: 1903px; background: rgb(253, 213, 29);"></dd>
+	        <dd style="width: 1903px; background: rgb(198,137,0);"></dd>
 	        </dl>
       </div>
     </div>

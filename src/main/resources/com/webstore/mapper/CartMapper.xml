@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.webstore.dao.CartMapper" >
   <resultMap id="BaseResultMap" type="com.webstore.domain.Cart" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="item_id" property="itemId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="item_num" property="itemNum" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, item_id, user_id, item_num
+    id, item_id, user_id, item_num, created
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.CartExample" >
     select
@@ -82,15 +83,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from cart
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from cart
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.webstore.domain.CartExample" >
     delete from cart
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.Cart" >
     insert into cart (id, item_id, user_id, 
-      item_num)
-    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{itemNum,jdbcType=INTEGER})
+      item_num, created)
+    values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{itemNum,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.Cart" >
     insert into cart
@@ -119,19 +120,25 @@
       <if test="itemNum != null" >
         item_num,
       </if>
+      <if test="created != null" >
+        created,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="itemId != null" >
-        #{itemId,jdbcType=INTEGER},
+        #{itemId,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="itemNum != null" >
         #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -145,16 +152,19 @@
     update cart
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=INTEGER},
+        item_id = #{record.itemId,jdbcType=BIGINT},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=VARCHAR},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.itemNum != null" >
         item_num = #{record.itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -163,10 +173,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update cart
-    set id = #{record.id,jdbcType=INTEGER},
-      item_id = #{record.itemId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=VARCHAR},
-      item_num = #{record.itemNum,jdbcType=INTEGER}
+    set id = #{record.id,jdbcType=BIGINT},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      item_num = #{record.itemNum,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,22 +186,26 @@
     update cart
     <set >
       <if test="itemId != null" >
-        item_id = #{itemId,jdbcType=INTEGER},
+        item_id = #{itemId,jdbcType=BIGINT},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="itemNum != null" >
         item_num = #{itemNum,jdbcType=INTEGER},
       </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Cart" >
     update cart
-    set item_id = #{itemId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=VARCHAR},
-      item_num = #{itemNum,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set item_id = #{itemId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      item_num = #{itemNum,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -10,7 +10,7 @@ public interface WatchedMapper {
 
     int deleteByExample(WatchedExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Watched record);
 
@@ -18,7 +18,7 @@ public interface WatchedMapper {
 
     List<Watched> selectByExample(WatchedExample example);
 
-    Watched selectByPrimaryKey(Integer id);
+    Watched selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Watched record, @Param("example") WatchedExample example);
 

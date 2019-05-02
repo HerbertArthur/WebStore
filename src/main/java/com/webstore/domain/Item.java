@@ -1,21 +1,27 @@
 package com.webstore.domain;
 
 public class Item {
-    private Integer itemId;
+    private Long itemId;
 
     private String itemCategory;
 
+    private Long itemCatId;
+
     private String itemName;
 
-    private Integer price;
+    private Double price;
+
+    private String description;
 
     private String iconPath;
 
-    public Integer getItemId() {
+    private Boolean status;
+
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 
@@ -27,6 +33,14 @@ public class Item {
         this.itemCategory = itemCategory == null ? null : itemCategory.trim();
     }
 
+    public Long getItemCatId() {
+        return itemCatId;
+    }
+
+    public void setItemCatId(Long itemCatId) {
+        this.itemCatId = itemCatId;
+    }
+
     public String getItemName() {
         return itemName;
     }
@@ -35,12 +49,20 @@ public class Item {
         this.itemName = itemName == null ? null : itemName.trim();
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     public String getIconPath() {
@@ -49,5 +71,13 @@ public class Item {
 
     public void setIconPath(String iconPath) {
         this.iconPath = iconPath == null ? null : iconPath.trim();
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

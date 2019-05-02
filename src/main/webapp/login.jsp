@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" ></c:set>
+<c:set var="ctx" value="${pageContext.request.contextPath}" ></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,7 +31,7 @@
 		<div class="login">
 			<div class="login_header">
     	<span>您还未登录</span>
-    	<a href="${contextPath}/register.jsp">免费注册</a>
+    	<a href="${ctx}/register.jsp">免费注册</a>
     </div>
 
 			<div class="login_box clear">
@@ -134,11 +134,11 @@
 				return true;
 			},
 			doLogin:function() {
-				$.post("${contextPath}/user/userLogin.do", $("#formlogin").serialize(),function(data){
+				$.post("${ctx}/user/userLogin.do", $("#formlogin").serialize(),function(data){
 					if (data.status == 200) {
 						jAlert('登录成功！',"提示", function(){
 							if (redirectUrl == "") {
-								location.href = "${contextPath}/index.jsp";
+								location.href = "${ctx}/index.jsp";
 							} else {
 								location.href = redirectUrl;
 							}

@@ -10,7 +10,7 @@ public interface FavoriteMapper {
 
     int deleteByExample(FavoriteExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Favorite record);
 
@@ -18,7 +18,7 @@ public interface FavoriteMapper {
 
     List<Favorite> selectByExample(FavoriteExample example);
 
-    Favorite selectByPrimaryKey(Integer id);
+    Favorite selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Favorite record, @Param("example") FavoriteExample example);
 

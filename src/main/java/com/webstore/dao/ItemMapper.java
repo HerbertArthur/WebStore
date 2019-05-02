@@ -1,18 +1,16 @@
 package com.webstore.dao;
 
-
 import com.webstore.domain.Item;
 import com.webstore.domain.ItemExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ItemMapper {
     int countByExample(ItemExample example);
 
     int deleteByExample(ItemExample example);
 
-    int deleteByPrimaryKey(Integer itemId);
+    int deleteByPrimaryKey(Long itemId);
 
     int insert(Item record);
 
@@ -20,7 +18,7 @@ public interface ItemMapper {
 
     List<Item> selectByExample(ItemExample example);
 
-    Item selectByPrimaryKey(Integer itemId);
+    Item selectByPrimaryKey(Long itemId);
 
     int updateByExampleSelective(@Param("record") Item record, @Param("example") ItemExample example);
 

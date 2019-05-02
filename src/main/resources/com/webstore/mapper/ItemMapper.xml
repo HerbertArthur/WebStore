@@ -2,11 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.webstore.dao.ItemMapper" >
   <resultMap id="BaseResultMap" type="com.webstore.domain.Item" >
-    <id column="item_id" property="itemId" jdbcType="INTEGER" />
+    <id column="item_id" property="itemId" jdbcType="BIGINT" />
     <result column="item_category" property="itemCategory" jdbcType="VARCHAR" />
+    <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="icon_path" property="iconPath" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    item_id, item_category, item_name, price, icon_path
+    item_id, item_category, item_cat_id, item_name, price, description, icon_path, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.ItemExample" >
     select
@@ -83,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from item
-    where item_id = #{itemId,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from item
-    where item_id = #{itemId,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.webstore.domain.ItemExample" >
     delete from item
@@ -100,10 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.Item" >
-    insert into item (item_id, item_category, item_name, 
-      price, icon_path)
-    values (#{itemId,jdbcType=INTEGER}, #{itemCategory,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
-      #{price,jdbcType=INTEGER}, #{iconPath,jdbcType=VARCHAR})
+    insert into item (item_id, item_category, item_cat_id, 
+      item_name, price, description, 
+      icon_path, status)
+    values (#{itemId,jdbcType=BIGINT}, #{itemCategory,jdbcType=VARCHAR}, #{itemCatId,jdbcType=BIGINT}, 
+      #{itemName,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{description,jdbcType=VARCHAR}, 
+      #{iconPath,jdbcType=VARCHAR}, #{status,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.Item" >
     insert into item
@@ -114,31 +119,49 @@
       <if test="itemCategory != null" >
         item_category,
       </if>
+      <if test="itemCatId != null" >
+        item_cat_id,
+      </if>
       <if test="itemName != null" >
         item_name,
       </if>
       <if test="price != null" >
         price,
       </if>
+      <if test="description != null" >
+        description,
+      </if>
       <if test="iconPath != null" >
         icon_path,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="itemId != null" >
-        #{itemId,jdbcType=INTEGER},
+        #{itemId,jdbcType=BIGINT},
       </if>
       <if test="itemCategory != null" >
         #{itemCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCatId != null" >
+        #{itemCatId,jdbcType=BIGINT},
       </if>
       <if test="itemName != null" >
         #{itemName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=INTEGER},
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="iconPath != null" >
         #{iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -152,19 +175,28 @@
     update item
     <set >
       <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=INTEGER},
+        item_id = #{record.itemId,jdbcType=BIGINT},
       </if>
       <if test="record.itemCategory != null" >
         item_category = #{record.itemCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemCatId != null" >
+        item_cat_id = #{record.itemCatId,jdbcType=BIGINT},
       </if>
       <if test="record.itemName != null" >
         item_name = #{record.itemName,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
-        price = #{record.price,jdbcType=INTEGER},
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.iconPath != null" >
         icon_path = #{record.iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +205,14 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update item
-    set item_id = #{record.itemId,jdbcType=INTEGER},
+    set item_id = #{record.itemId,jdbcType=BIGINT},
       item_category = #{record.itemCategory,jdbcType=VARCHAR},
+      item_cat_id = #{record.itemCatId,jdbcType=BIGINT},
       item_name = #{record.itemName,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=INTEGER},
-      icon_path = #{record.iconPath,jdbcType=VARCHAR}
+      price = #{record.price,jdbcType=DOUBLE},
+      description = #{record.description,jdbcType=VARCHAR},
+      icon_path = #{record.iconPath,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,24 +223,36 @@
       <if test="itemCategory != null" >
         item_category = #{itemCategory,jdbcType=VARCHAR},
       </if>
+      <if test="itemCatId != null" >
+        item_cat_id = #{itemCatId,jdbcType=BIGINT},
+      </if>
       <if test="itemName != null" >
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=INTEGER},
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="iconPath != null" >
         icon_path = #{iconPath,jdbcType=VARCHAR},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
     </set>
-    where item_id = #{itemId,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Item" >
     update item
     set item_category = #{itemCategory,jdbcType=VARCHAR},
+      item_cat_id = #{itemCatId,jdbcType=BIGINT},
       item_name = #{itemName,jdbcType=VARCHAR},
-      price = #{price,jdbcType=INTEGER},
-      icon_path = #{iconPath,jdbcType=VARCHAR}
-    where item_id = #{itemId,jdbcType=INTEGER}
+      price = #{price,jdbcType=DOUBLE},
+      description = #{description,jdbcType=VARCHAR},
+      icon_path = #{iconPath,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT}
+    where item_id = #{itemId,jdbcType=BIGINT}
   </update>
 </mapper>

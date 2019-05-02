@@ -139,58 +139,20 @@
 	<div class="b_left">
 	<h2>优选必买<span></span></h2>
 				<ul class="bbig" id="bigPerfect">
-					<%--<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">--%>
-						<%--<a href="#" title="红肉火龙果1000g（2个装）" target="_blank">--%>
-							<%--<img class="lazy" src="/upload/html/95256f5b2857ec28914f631532508d76.jpg" style="display: inline;">--%>
-						<%--</a>--%>
-                        <%--<div class="gBtn p-btn bbtn" style="top: 260px;">--%>
-                            <%--<a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"--%>
-                                <%--href="javascript:addItem2Cart(0)" indexflag="1">加入购物车</a>--%>
-                        <%--</div>--%>
-						<%--<div class="bprice" id="priceK_b_215383_0">--%>
-							<%--<span><sup>￥</sup></span>19.9--%>
-						<%--</div></li>--%>
-					<%--<li class="price_list0" goods="57111" eid="b_57111_0"--%>
-						<%--id="cx_b_57111_0"><a--%>
-						<%--href="#"--%>
-						<%--title="湾仔码头 玉米蔬菜猪肉手工水饺 720g" target="_blank"><img class="lazy"--%>
-							<%--src="/images/html/49111b8189bf71370cdb145f8fdb1195.jpg"--%>
-							<%--style="display: inline;"></a>--%>
-					<%--<div class="gBtn p-btn bbtn" style="top: 260px;">--%>
-							<%--<a pid="57111"--%>
-								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
-						<%--</div>--%>
-						<%--<div class="bprice" id="priceK_b_57111_0">--%>
-							<%--<span><sup>￥</sup></span>29.7--%>
-						<%--</div></li>--%>
-					<%--<li class="price_list0" goods="5536" eid="b_5536_0"--%>
-						<%--id="cx_b_5536_0"><a--%>
-						<%--href="#"--%>
-						<%--title="汾酒 53°20年青花瓷  500ml" target="_blank"><img class="lazy"--%>
-							<%--alt="汾酒 53°20年青花瓷  500ml"--%>
-							<%--src="/images/html/cf33d7d36f1128577782ded21fe812a9.jpg"--%>
-							<%--style="display: inline;"></a>--%>
-					<%--<div class="gBtn p-btn bbtn">--%>
-							<%--<a pid="5536"--%>
-								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
-						<%--</div>--%>
-						<%--<div class="bprice" id="priceK_b_5536_0">--%>
-							<%--<span><sup>￥</sup></span>318--%>
-						<%--</div></li>--%>
-					<%--<li class="price_list0" goods="12045" eid="b_12045_0"--%>
-						<%--id="cx_b_12045_0"><a--%>
-						<%--href="http://www.e3mall.cn/html/products/13/1800012045.html#trackref=sfbest_hp_hp_goods_big-item4"--%>
-						<%--title="佳沛  新西兰阳光金果奇异果6粒" target="_blank"><img class="lazy"--%>
-							<%--alt="佳沛  新西兰阳光金果奇异果6粒"--%>
-							<%--src="/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg"--%>
-							<%--style="display: inline;"></a>--%>
-					<%--<div class="gBtn p-btn bbtn">--%>
-							<%--<a pid="12045"--%>
-								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
-						<%--</div>--%>
-						<%--<div class="bprice" id="priceK_b_12045_0">--%>
-							<%--<span><sup>￥</sup></span>39.8--%>
-						<%--</div></li>--%>
+					<li class="price_list0" goods="12045" eid="b_12045_0"
+						id="cx_b_12045_0"><a
+						href="http://www.e3mall.cn/html/products/13/1800012045.html#trackref=sfbest_hp_hp_goods_big-item4"
+						title="佳沛  新西兰阳光金果奇异果6粒" target="_blank"><img class="lazy"
+							alt="佳沛  新西兰阳光金果奇异果6粒"
+							src="/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg"
+							style="display: inline;"></a>
+					<div class="gBtn p-btn bbtn">
+							<a pid="12045"
+								href="javascript:void(0)" indexflag="1">加入购物车</a>
+						</div>
+						<div class="bprice" id="priceK_b_12045_0">
+							<span><sup>￥</sup></span>39.8
+						</div></li>
 				</ul>
 				<ul class="bsmall" id="smallPerfect">
 					<li class="price_list0" goods="37194" eid="b_37194_1"
@@ -515,34 +477,6 @@
 <!-- footer end -->
 </body>
 <script>
-	function addItem2Cart(itemId) {
-		alert('点击了加入购物车，传入id：'+itemId);
-    }
-
-    $(function(){
-		$.ajax({
-		    type : 'post',
-			url : '${contextPath}/item/showSelectedItem.do',
-			success: function (data) {
-                let htmlStr = '';
-				for (let i in data){
-					// alert("path:"+data[i].iconPath+'>>id:'+data[i].itemId);
-                    htmlStr += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
-                    '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
-                    '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
-                    '  </a>' +
-                    '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
-                    '    <a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
-                    '      href="javascript:addItem2Cart('+ data[i].itemId +')" indexflag="1">加入购物车</a>' +
-                    '  </div>' +
-                    '  <div class="bprice" id="priceK_b_215383_0">' +
-                    '    <span><sup>￥</sup></span>' + data[i].price +
-                    '  </div>' +
-                    '</li>');
-                }
-                $("#bigPerfect").html(htmlStr);
-            }
-        });
-    });
+	/*把js写到global_index.js*/
 </script>
 </html>

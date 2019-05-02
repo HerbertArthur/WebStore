@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.webstore.dao.FavoriteMapper" >
-  <resultMap id="BaseResultMap" type="com.webstore.domain.Favorite" >
+<mapper namespace="com.webstore.dao.ItemCatMapper" >
+  <resultMap id="BaseResultMap" type="com.webstore.domain.ItemCat" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="is_parent" property="isParent" jdbcType="BIT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, item_id, created
+    id, parent_id, name, status, sort_order, is_parent, created, updated
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.FavoriteExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.ItemCatExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from favorite
+    from item_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +89,114 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from favorite
+    from item_cat
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from favorite
+    delete from item_cat
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.webstore.domain.FavoriteExample" >
-    delete from favorite
+  <delete id="deleteByExample" parameterType="com.webstore.domain.ItemCatExample" >
+    delete from item_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.webstore.domain.Favorite" >
-    insert into favorite (id, user_id, item_id, 
-      created)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, 
-      #{created,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.webstore.domain.ItemCat" >
+    insert into item_cat (id, parent_id, name, 
+      status, sort_order, is_parent, 
+      created, updated)
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.webstore.domain.Favorite" >
-    insert into favorite
+  <insert id="insertSelective" parameterType="com.webstore.domain.ItemCat" >
+    insert into item_cat
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="parentId != null" >
+        parent_id,
       </if>
-      <if test="itemId != null" >
-        item_id,
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="isParent != null" >
+        is_parent,
       </if>
       <if test="created != null" >
         created,
+      </if>
+      <if test="updated != null" >
+        updated,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null" >
-        #{itemId,jdbcType=BIGINT},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="isParent != null" >
+        #{isParent,jdbcType=BIT},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
       </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.webstore.domain.FavoriteExample" resultType="java.lang.Integer" >
-    select count(*) from favorite
+  <select id="countByExample" parameterType="com.webstore.domain.ItemCatExample" resultType="java.lang.Integer" >
+    select count(*) from item_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update favorite
+    update item_cat
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.parentId != null" >
+        parent_id = #{record.parentId,jdbcType=BIGINT},
       </if>
-      <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=BIGINT},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.sortOrder != null" >
+        sort_order = #{record.sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.isParent != null" >
+        is_parent = #{record.isParent,jdbcType=BIT},
       </if>
       <if test="record.created != null" >
         created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -162,35 +204,55 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update favorite
+    update item_cat
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      item_id = #{record.itemId,jdbcType=BIGINT},
-      created = #{record.created,jdbcType=TIMESTAMP}
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      sort_order = #{record.sortOrder,jdbcType=INTEGER},
+      is_parent = #{record.isParent,jdbcType=BIT},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Favorite" >
-    update favorite
+  <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.ItemCat" >
+    update item_cat
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null" >
-        item_id = #{itemId,jdbcType=BIGINT},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder,jdbcType=INTEGER},
+      </if>
+      <if test="isParent != null" >
+        is_parent = #{isParent,jdbcType=BIT},
       </if>
       <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
       </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Favorite" >
-    update favorite
-    set user_id = #{userId,jdbcType=BIGINT},
-      item_id = #{itemId,jdbcType=BIGINT},
-      created = #{created,jdbcType=TIMESTAMP}
+  <update id="updateByPrimaryKey" parameterType="com.webstore.domain.ItemCat" >
+    update item_cat
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sort_order = #{sortOrder,jdbcType=INTEGER},
+      is_parent = #{isParent,jdbcType=BIT},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

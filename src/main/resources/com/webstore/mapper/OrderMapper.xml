@@ -2,10 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.webstore.dao.OrderMapper" >
   <resultMap id="BaseResultMap" type="com.webstore.domain.Order" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="item_id" property="itemId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="item_count" property="itemCount" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="is_payed" property="isPayed" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="val1" property="val1" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, item_id, user_id, status
+    id, order_num, item_id, item_count, user_id, total_price, description, is_payed, 
+    create_time, status, val1
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.OrderExample" >
     select
@@ -82,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from order
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.webstore.domain.OrderExample" >
     delete from order
@@ -99,10 +107,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.Order" >
-    insert into order (id, item_id, user_id, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR})
+    insert into order (id, order_num, item_id, 
+      item_count, user_id, total_price, 
+      description, is_payed, create_time, 
+      status, val1)
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=VARCHAR}, #{itemId,jdbcType=BIGINT}, 
+      #{itemCount,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{totalPrice,jdbcType=DOUBLE}, 
+      #{description,jdbcType=VARCHAR}, #{isPayed,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=BIT}, #{val1,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.Order" >
     insert into order
@@ -110,28 +122,70 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
       <if test="itemId != null" >
         item_id,
+      </if>
+      <if test="itemCount != null" >
+        item_count,
       </if>
       <if test="userId != null" >
         user_id,
       </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="isPayed != null" >
+        is_payed,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="val1 != null" >
+        val1,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
       </if>
       <if test="itemId != null" >
-        #{itemId,jdbcType=INTEGER},
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemCount != null" >
+        #{itemCount,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isPayed != null" >
+        #{isPayed,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="val1 != null" >
+        #{val1,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -145,16 +199,37 @@
     update order
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNum != null" >
+        order_num = #{record.orderNum,jdbcType=VARCHAR},
       </if>
       <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=INTEGER},
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemCount != null" >
+        item_count = #{record.itemCount,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=VARCHAR},
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalPrice != null" >
+        total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isPayed != null" >
+        is_payed = #{record.isPayed,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.val1 != null" >
+        val1 = #{record.val1,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -163,10 +238,17 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update order
-    set id = #{record.id,jdbcType=INTEGER},
-      item_id = #{record.itemId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=VARCHAR}
+    set id = #{record.id,jdbcType=BIGINT},
+      order_num = #{record.orderNum,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      item_count = #{record.itemCount,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      total_price = #{record.totalPrice,jdbcType=DOUBLE},
+      description = #{record.description,jdbcType=VARCHAR},
+      is_payed = #{record.isPayed,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=BIT},
+      val1 = #{record.val1,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +256,51 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Order" >
     update order
     <set >
+      <if test="orderNum != null" >
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
       <if test="itemId != null" >
-        item_id = #{itemId,jdbcType=INTEGER},
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemCount != null" >
+        item_count = #{itemCount,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isPayed != null" >
+        is_payed = #{isPayed,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="val1 != null" >
+        val1 = #{val1,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Order" >
     update order
-    set item_id = #{itemId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=BIGINT},
+      item_count = #{itemCount,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      total_price = #{totalPrice,jdbcType=DOUBLE},
+      description = #{description,jdbcType=VARCHAR},
+      is_payed = #{isPayed,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=BIT},
+      val1 = #{val1,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

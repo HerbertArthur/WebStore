@@ -1,33 +1,45 @@
 package com.webstore.domain;
 
+import java.util.Date;
+
 public class Watched {
-    private Integer id;
+    private Long id;
 
-    private Integer itemId;
+    private Long itemId;
 
-    private String userId;
+    private Long userId;
 
-    public Integer getId() {
+    private Date created;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

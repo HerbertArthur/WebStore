@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" ></c:set>
+<c:set var="ctx" value="${pageContext.request.contextPath}" ></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +32,7 @@
 <!-- reg_main -->
 <div class="tabBox clear">
     <span class="reg_hide reg_show regMr5" id="regper">个人用户</span>
-    <span class="reg_hide" id="regcom" style="">企业用户</span>    <div class="login">已有账号，立即 <a href="${contextPath}/login.jsp">登录</a></div>
+    <span class="reg_hide" id="regcom" style="">企业用户</span>    <div class="login">已有账号，立即 <a href="${ctx}/login.jsp">登录</a></div>
 </div>
 <!--个人用户-->
 <div class="reg_main reg_border regTab" id="perDiv">
@@ -140,7 +140,7 @@
 			return flag;
 		},
 		doSubmit:function() {
-			$.post("${contextPath}/user/userRegister.do",$("#regForm_mod").serialize(), function(data){
+			$.post("${ctx}/user/userRegister.do",$("#regForm_mod").serialize(), function(data){
 				if(data.status == 200){
 					jAlert('用户注册成功，请登录！',"提示", function(){
 						REGISTER.login();
@@ -151,7 +151,7 @@
 			});
 		},
 		login:function() {
-			 location.href = "${contextPath}/login.jsp";
+			 location.href = "${ctx}/login.jsp";
 			 return false;
 		},
 		reg:function() {

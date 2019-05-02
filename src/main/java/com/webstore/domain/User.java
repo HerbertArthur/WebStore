@@ -1,13 +1,13 @@
 package com.webstore.domain;
 
 public class User {
-    private Integer userId;
+    private Long userId;
 
     private String userName;
 
     private String password;
 
-    private Integer sex;
+    private Boolean sex;
 
     private String mail;
 
@@ -15,11 +15,13 @@ public class User {
 
     private String address;
 
-    public Integer getUserId() {
+    private Boolean status;
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -39,11 +41,11 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getSex() {
+    public Boolean getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(Boolean sex) {
         this.sex = sex;
     }
 
@@ -60,7 +62,7 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getAddress() {
@@ -69,5 +71,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

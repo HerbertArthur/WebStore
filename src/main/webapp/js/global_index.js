@@ -2701,38 +2701,63 @@ $(function(){
 })
  //口碑甄选
   $(function(){
-	$(".bbig li").each(function(){
-		$(this).sfHover({
-			hoverEvent: function(){
-				if ($(this).find(".gWindow").length > 0){
-					$(this).find(".gBtn").hide();
-				}else{
-					$(this).find(".gBtn").show();
-					$(this).find(".gBtn").animate({top:"225px"},200);
-				}	
-			},
-			outEvent: function(){
-			    $(this).find(".gBtn").animate({top:"260px"},300);
-			}   
-		});	
+      let ctx = $('#ctxValue').val();
+      $.ajax({
+          type : 'post',
+          url : ctx+'/item/showSelectedItem.do',
+          success: function (data) {
+              let htmlStr = '';
+              for (let i in data){
+                  // alert("path:"+data[i].iconPath+'>>id:'+data[i].itemId);
+                  htmlStr += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
+                      '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
+                      '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
+                      '  </a>' +
+                      '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
+                      '    <a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
+                      '      href="javascript:addItem2Cart('+ data[i].itemId +')" indexflag="1">加入购物车</a>' +
+                      '  </div>' +
+                      '  <div class="bprice" id="priceK_b_215383_0">' +
+                      '    <span><sup>￥</sup></span>' + data[i].price +
+                      '  </div>' +
+                      '</li>');
+              }
+              $("#bigPerfect").html(htmlStr);
+
+              $(".bbig li").each(function(){
+                  $(this).sfHover({
+                      hoverEvent: function(){
+                          if ($(this).find(".gWindow").length > 0){
+                              $(this).find(".gBtn").hide();
+                          }else{
+                              $(this).find(".gBtn").show();
+                              $(this).find(".gBtn").animate({top:"225px"},200);
+                          }
+                      },
+                      outEvent: function(){
+                          $(this).find(".gBtn").animate({top:"260px"},300);
+                      }
+                  });
+              });
+
+              $(".bsmall li").each(function(){
+                  $(this).sfHover({
+                      hoverEvent: function(){
+                          if ($(this).find(".gWindow").length > 0){
+                              $(this).find(".gBtn").hide();
+                          }else{
+                              $(this).find(".gBtn").show();
+                              $(this).find(".gBtn").animate({top:"168px"},200);
+                          }
+                      },
+                      outEvent: function(){
+                          $(this).find(".gBtn").animate({top:"210px"},300);
+                      }
+                  });
+              });
+          }
+    });
 	});
-	
-	$(".bsmall li").each(function(){
-		$(this).sfHover({
-			hoverEvent: function(){
-				if ($(this).find(".gWindow").length > 0){
-					$(this).find(".gBtn").hide();
-				}else{
-					$(this).find(".gBtn").show();
-					$(this).find(".gBtn").animate({top:"168px"},200);
-				}	
-			},
-			outEvent: function(){
-			    $(this).find(".gBtn").animate({top:"210px"},300);
-			}   
-		});	
-	});
-	})
 //右边楼层图片
 $(function(){
 	$(".rimg").mouseover(function(){

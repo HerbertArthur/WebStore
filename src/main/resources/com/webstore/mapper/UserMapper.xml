@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.webstore.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.webstore.domain.User" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="BIT" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, user_name, password, sex, mail, phone, address
+    user_id, user_name, password, sex, mail, phone, address, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.UserExample" >
     select
@@ -85,15 +86,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from user
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.webstore.domain.UserExample" >
     delete from user
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.User" >
     insert into user (user_id, user_name, password, 
-      sex, mail, phone, address
-      )
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=INTEGER}, #{mail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
-      )
+      sex, mail, phone, address, 
+      status)
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{mail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.User" >
     insert into user
@@ -133,10 +134,13 @@
       <if test="address != null" >
         address,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
@@ -145,7 +149,7 @@
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        #{sex,jdbcType=INTEGER},
+        #{sex,jdbcType=BIT},
       </if>
       <if test="mail != null" >
         #{mail,jdbcType=VARCHAR},
@@ -155,6 +159,9 @@
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -168,7 +175,7 @@
     update user
     <set >
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
@@ -177,7 +184,7 @@
         password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=INTEGER},
+        sex = #{record.sex,jdbcType=BIT},
       </if>
       <if test="record.mail != null" >
         mail = #{record.mail,jdbcType=VARCHAR},
@@ -188,6 +195,9 @@
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=BIT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -195,13 +205,14 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update user
-    set user_id = #{record.userId,jdbcType=INTEGER},
+    set user_id = #{record.userId,jdbcType=BIGINT},
       user_name = #{record.userName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=BIT},
       mail = #{record.mail,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR}
+      address = #{record.address,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -216,7 +227,7 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        sex = #{sex,jdbcType=INTEGER},
+        sex = #{sex,jdbcType=BIT},
       </if>
       <if test="mail != null" >
         mail = #{mail,jdbcType=VARCHAR},
@@ -227,17 +238,21 @@
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
     </set>
-    where user_id = #{userId,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=BIT},
       mail = #{mail,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
+      address = #{address,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT}
+    where user_id = #{userId,jdbcType=BIGINT}
   </update>
 </mapper>

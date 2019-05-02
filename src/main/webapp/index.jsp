@@ -34,7 +34,6 @@
 <jsp:include page="WEB-INF/jsp/commons/header.jsp" />
 <jsp:include page="WEB-INF/jsp/commons/mainmenu.jsp" />
 <!-- header end -->
-<jsp:include page="initialPage.jsp"/>
 <!----row1------->
 <div class="slide_show" id="slide_show">
 	<div class="indexW">
@@ -42,7 +41,7 @@
 		<ol>
 			<c:forEach items="${ad1List}" var="node" varStatus="status">
 			<li>
-			  <a name="sfbest_hp_hp_focus_${status.index }" class="fore_pic trackref" href="${node.url }" target="_blank"> 
+			  <a name="sfbest_hp_hp_focus_${status.index}" class="fore_pic trackref" href="${node.url }" target="_blank">
 				<img id="lunbo_0" alt="${node.title }"	src="${node.pic }">
 			  </a>
 			</li>
@@ -94,31 +93,28 @@
           <img alt="8.30-9.5 月饼" src="/images/html/ddf3f66b114f3a3bfbbe0b47693cdbf0.jpg">
           <div class="rmask"></div>
           </a>
-		 		           <a name="sfbest_hp_hp_focus_right-ad2" class="a-img r-img2 trackref" href="/html/activity/1472471068.html" target="_blank">
           <img s="" alt="8.30-9.5" src="/images/html/51e357022c1f826f13211222831a4b13.jpg">
           <div class="rmask"></div>
           </a>
-		  
-		 			
           <a name="sfbest_hp_hp_focus_right-ad3" class="a-img r-img3 trackref" href="/html/activity/1473011294.html" target="_blank">
           <img alt="9.5中秋菜谱" src="/images/html/838abc2055e36f423701de255bbc9914.jpg">
           <div class="rmask"></div>
           </a>
-		   	  </div>   
+	 </div>
  	</div>
-      <ul class="none" id="lunboNum">
-      			<c:forEach items="${ad1List }" varStatus="status">
-      			<li class="<c:if test="${status.index==0 }">cur</c:if>">${status.index+1 }</li>
-      			</c:forEach>
-		         <li class="cur">1</li>
-		        <li class="">2</li>
-		        <li class="">3</li>
-		        <li class="">4</li>
-		        <li class="">5</li>
-		        <li class="">6</li>
-		        <li class="">7</li>
-		        <li class="">8</li>
-		      </ul>
+		<ul class="none" id="lunboNum">
+			<c:forEach items="${ad1List }" varStatus="status">
+			<li class="<c:if test="${status.index==0 }">cur</c:if>">${status.index+1}</li>
+			</c:forEach>
+			<li class="cur">1</li>
+			<li class="">2</li>
+			<li class="">3</li>
+			<li class="">4</li>
+			<li class="">5</li>
+			<li class="">6</li>
+			<li class="">7</li>
+			<li class="">8</li>
+		</ul>
       <div class="indexbg" id="indexbg">
       <dl style="left: -1903px;">
 	        <dd style="width: 1903px; background: rgb(20, 16, 13);"></dd>
@@ -139,20 +135,17 @@
 	<div class="b_left">
 	<h2>优选必买<span></span></h2>
 				<ul class="bbig" id="bigPerfect">
-					<li class="price_list0" goods="12045" eid="b_12045_0"
-						id="cx_b_12045_0"><a
-						href="http://www.e3mall.cn/html/products/13/1800012045.html#trackref=sfbest_hp_hp_goods_big-item4"
-						title="佳沛  新西兰阳光金果奇异果6粒" target="_blank"><img class="lazy"
-							alt="佳沛  新西兰阳光金果奇异果6粒"
-							src="/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg"
-							style="display: inline;"></a>
-					<div class="gBtn p-btn bbtn">
-							<a pid="12045"
-								href="javascript:void(0)" indexflag="1">加入购物车</a>
-						</div>
-						<div class="bprice" id="priceK_b_12045_0">
-							<span><sup>￥</sup></span>39.8
-						</div></li>
+					<%--<li class="price_list0" goods="12045" eid="b_12045_0" id="cx_b_12045_0">--%>
+						<%--<a href="http://www.e3mall.cn/html/products/13/1800012045.html#trackref=sfbest_hp_hp_goods_big-item4" title="佳沛  新西兰阳光金果奇异果6粒" target="_blank">--%>
+							<%--<img class="lazy" alt="佳沛  新西兰阳光金果奇异果6粒"--%>
+								<%--src="/images/html/2a3ba6ffb33d8fca0dc848f94e3d99d8.jpg" style="display: inline;"></a>--%>
+						<%--<div class="gBtn p-btn bbtn">--%>
+							<%--<a pid="12045" href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
+						<%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_12045_0">--%>
+							<%--<span><sup>￥</sup></span>39.8--%>
+						<%--</div>--%>
+					<%--</li>--%>
 				</ul>
 				<ul class="bsmall" id="smallPerfect">
 					<li class="price_list0" goods="37194" eid="b_37194_1"

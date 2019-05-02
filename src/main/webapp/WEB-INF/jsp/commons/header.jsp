@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!--shortcut start-->
-<jsp:include page="shortcut.jsp" />
+<jsp:include page="shortcut.jsp"/>
 <!--shortcut end-->
 <div id="header">
   <div class="header_inner">
@@ -14,7 +14,7 @@
 		</div>
     <div class="index_promo"></div>
     <div class="search">
-      <form action="http://localhost:8085/search.html" id="searchForm" name="query" method="GET">
+      <form action="${ctx}/search.jsp" id="searchForm" name="query" method="GET">
         <input type="text" class="text keyword ac_input" name="keyword" id="keyword" value="" style="color: rgb(153, 153, 153);" onkeydown="javascript:if(event.keyCode==13) search_keys('searchForm');" autocomplete="off">
         <input type="button" value="" class="submit" onclick="search_keys('searchForm')">
       </form>

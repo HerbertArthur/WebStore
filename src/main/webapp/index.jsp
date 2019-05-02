@@ -12,8 +12,6 @@
 <meta property="wb:webmaster" content="3a008ad947166307">
     <link rel="stylesheet" type="text/css" href="/css/base_w1200.css?v=2016071333">
     <link rel="stylesheet" type="text/css" href="/css/index.css?v=2016071312">
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/js/global_index.js"></script>
 <style id="style-1-cropbar-clipper">
 .en-markup-crop-options {
     top: 18px !important;
@@ -27,7 +25,10 @@
 .en-markup-crop-options div div:first-of-type {
     margin-left: 0px !important;
 }
-</style></head>
+</style>
+</head>
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/js/global_index.js"></script>
 <body>
 <!-- header start -->
 <jsp:include page="WEB-INF/jsp/commons/header.jsp" />
@@ -138,17 +139,17 @@
 	<div class="b_left">
 	<h2>优选必买<span></span></h2>
 				<ul class="bbig" id="bigPerfect">
-					<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">
-						<a href="#" title="红肉火龙果1000g（2个装）" target="_blank">
-							<img class="lazy" src="/upload/html/95256f5b2857ec28914f631532508d76.jpg" style="display: inline;">
-						</a>
-                        <div class="gBtn p-btn bbtn" style="top: 260px;">
-                            <a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"
-                                href="javascript:addItem2Cart(0)" indexflag="1">加入购物车</a>
-                        </div>
-						<div class="bprice" id="priceK_b_215383_0">
-							<span><sup>￥</sup></span>19.9
-						</div></li>
+					<%--<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">--%>
+						<%--<a href="#" title="红肉火龙果1000g（2个装）" target="_blank">--%>
+							<%--<img class="lazy" src="/upload/html/95256f5b2857ec28914f631532508d76.jpg" style="display: inline;">--%>
+						<%--</a>--%>
+                        <%--<div class="gBtn p-btn bbtn" style="top: 260px;">--%>
+                            <%--<a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"--%>
+                                <%--href="javascript:addItem2Cart(0)" indexflag="1">加入购物车</a>--%>
+                        <%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_215383_0">--%>
+							<%--<span><sup>￥</sup></span>19.9--%>
+						<%--</div></li>--%>
 					<%--<li class="price_list0" goods="57111" eid="b_57111_0"--%>
 						<%--id="cx_b_57111_0"><a--%>
 						<%--href="#"--%>
@@ -518,12 +519,28 @@
 		alert('点击了加入购物车，传入id：'+itemId);
     }
 
-    $(function () {
+    $(function(){
 		$.ajax({
 		    type : 'post',
 			url : '${contextPath}/item/showSelectedItem.do',
 			success: function (data) {
-				alert('>>>>'+ JSON.stringify(data))
+                let htmlStr = '';
+				for (let i in data){
+					// alert("path:"+data[i].iconPath+'>>id:'+data[i].itemId);
+                    htmlStr += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
+                    '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
+                    '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
+                    '  </a>' +
+                    '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
+                    '    <a pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
+                    '      href="javascript:addItem2Cart('+ data[i].itemId +')" indexflag="1">加入购物车</a>' +
+                    '  </div>' +
+                    '  <div class="bprice" id="priceK_b_215383_0">' +
+                    '    <span><sup>￥</sup></span>' + data[i].price +
+                    '  </div>' +
+                    '</li>');
+                }
+                $("#bigPerfect").html(htmlStr);
             }
         });
     });

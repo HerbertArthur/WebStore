@@ -3,8 +3,10 @@
 <mapper namespace="com.webstore.dao.ItemMapper" >
   <resultMap id="BaseResultMap" type="com.webstore.domain.Item" >
     <id column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="item_category" property="itemCategory" jdbcType="VARCHAR" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="icon_path" property="iconPath" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    item_id, item_name, price
+    item_id, item_category, item_name, price, icon_path
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.ItemExample" >
     select
@@ -98,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.Item" >
-    insert into item (item_id, item_name, price
-      )
-    values (#{itemId,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}
-      )
+    insert into item (item_id, item_category, item_name, 
+      price, icon_path)
+    values (#{itemId,jdbcType=INTEGER}, #{itemCategory,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{iconPath,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.Item" >
     insert into item
@@ -109,22 +111,34 @@
       <if test="itemId != null" >
         item_id,
       </if>
+      <if test="itemCategory != null" >
+        item_category,
+      </if>
       <if test="itemName != null" >
         item_name,
       </if>
       <if test="price != null" >
         price,
       </if>
+      <if test="iconPath != null" >
+        icon_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="itemId != null" >
         #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="itemCategory != null" >
+        #{itemCategory,jdbcType=VARCHAR},
       </if>
       <if test="itemName != null" >
         #{itemName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         #{price,jdbcType=INTEGER},
+      </if>
+      <if test="iconPath != null" >
+        #{iconPath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -140,11 +154,17 @@
       <if test="record.itemId != null" >
         item_id = #{record.itemId,jdbcType=INTEGER},
       </if>
+      <if test="record.itemCategory != null" >
+        item_category = #{record.itemCategory,jdbcType=VARCHAR},
+      </if>
       <if test="record.itemName != null" >
         item_name = #{record.itemName,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
         price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.iconPath != null" >
+        icon_path = #{record.iconPath,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -154,8 +174,10 @@
   <update id="updateByExample" parameterType="map" >
     update item
     set item_id = #{record.itemId,jdbcType=INTEGER},
+      item_category = #{record.itemCategory,jdbcType=VARCHAR},
       item_name = #{record.itemName,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=INTEGER}
+      price = #{record.price,jdbcType=INTEGER},
+      icon_path = #{record.iconPath,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +185,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Item" >
     update item
     <set >
+      <if test="itemCategory != null" >
+        item_category = #{itemCategory,jdbcType=VARCHAR},
+      </if>
       <if test="itemName != null" >
         item_name = #{itemName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=INTEGER},
       </if>
+      <if test="iconPath != null" >
+        icon_path = #{iconPath,jdbcType=VARCHAR},
+      </if>
     </set>
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Item" >
     update item
-    set item_name = #{itemName,jdbcType=VARCHAR},
-      price = #{price,jdbcType=INTEGER}
+    set item_category = #{itemCategory,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      icon_path = #{iconPath,jdbcType=VARCHAR}
     where item_id = #{itemId,jdbcType=INTEGER}
   </update>
 </mapper>

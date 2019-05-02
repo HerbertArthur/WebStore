@@ -7,10 +7,10 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <head>
-<link rel="stylesheet" href="${contextPath}/easyui/themes/default/easyui.css">
-<link rel="stylesheet" href="${contextPath}/easyui/themes/icon.css">
+<%--<link rel="stylesheet" href="${contextPath}/easyui/themes/default/easyui.css">--%>
+<%--<link rel="stylesheet" href="${contextPath}/easyui/themes/icon.css">--%>
 
-<script type="text/javascript" src="${contextPath}/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="${contextPath}/easyui/jquery.easyui.min.js"></script>
+<%--<script type="text/javascript" src="${contextPath}/easyui/jquery.min.js"></script>--%>
+<%--<script type="text/javascript" src="${contextPath}/easyui/jquery.easyui.min.js"></script>--%>
 
 </head>

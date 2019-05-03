@@ -36,7 +36,8 @@
             <div class="f-sort">
                 <div class="pagin">
                     <span class="txt"><span class="n">当前${page}页</span>/共${totalPages}页</span>
-                    <span class="prev">上一页</span><span class="next">下一页</span></div>
+                    <span id="prevPage" class="prev" style="cursor: pointer">上一页</span>
+                    <span id="nextPage" class="next" style="cursor: pointer">下一页</span></div>
                 <div class="total">共<span>${recordCount}</span>个商品</div>
             </div>
         </div>
@@ -130,4 +131,28 @@
     <script type="text/javascript" src="/js/cookie.js?v=20160416222"></script>
     <script type="text/javascript" src="/js/shadow.js?v=20160416"></script>
 </div>
+<script type="text/javascript">
+    $(function () {
+        //翻页
+        let keyword = '${query}';
+        let page = ${page};
+        let totalPages = ${totalPages};
+        $('#prevPage').click(function () {
+            page = page - 1;
+            if (page < 1){
+                page = 1;
+            }
+            let pageSize = 0;
+            location.href = '${ctx}'+'/item/searchItems.do?keyword='+keyword+'&currentPage='+page+'&pageSize='+pageSize;
+        })
+        $('#nextPage').click(function () {
+            page = page + 1;
+            if (page > totalPages){
+                page = totalPages;
+            }
+            let pageSize = 0;
+            location.href = '${ctx}'+'/item/searchItems.do?keyword='+keyword+'&currentPage='+page+'&pageSize='+pageSize;
+        });
+    });
+</script>
 </html>

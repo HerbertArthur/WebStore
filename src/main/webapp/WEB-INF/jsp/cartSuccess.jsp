@@ -17,8 +17,8 @@
 </head>
 <body>
 
-    <jsp:include page="jsp/commons/header1.jsp" />
-    <jsp:include page="jsp/commons/mainmenu.jsp" />
+    <jsp:include page="WEB-INF/jsp/commons/header1.jsp" />
+    <jsp:include page="WEB-INF/jsp/commons/mainmenu.jsp" />
 	<!--main start-->
 	<div class="cartMain">
 		<div class="cartThead" style="margin: 50px 0px 50px 50px;">
@@ -30,7 +30,7 @@
 		</div>
 
 	</div>
-	<jsp:include page="jsp/commons/footer.jsp" />
+	<jsp:include page="WEB-INF/jsp/commons/footer.jsp" />
 
 
 </body>

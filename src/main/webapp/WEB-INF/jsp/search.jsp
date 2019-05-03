@@ -16,13 +16,13 @@
 </head>
 <body>
 <!-- header start -->
-<jsp:include page="WEB-INF/jsp/commons/header.jsp"/>
-<jsp:include page="WEB-INF/jsp/commons/mainmenu.jsp"/>
+<jsp:include page="commons/header.jsp"/>
+<jsp:include page="commons/mainmenu.jsp"/>
 <!-------面包线 linknav--------->
 <div class="linknav">
     <div class="schArticle">
         <a href="/article/search?keyword=%E6%9C%88%E9%A5%BC" target="_blank">找到和“<span>${query}</span>”相关的文章<span
-                id="articlenum">${totalPages }</span>篇&gt;&gt;
+                id="articlenum">${totalPages}</span>篇&gt;&gt;
         </a>
     </div>
     <div class="breadcrumb">
@@ -35,38 +35,38 @@
         <div class="r-filter">
             <div class="f-sort">
                 <div class="pagin">
-                    <span class="txt"><span class="n">${page }</span>/${totalPages }</span>
+                    <span class="txt"><span class="n">当前${page}页</span>/共${totalPages}页</span>
                     <span class="prev">上一页</span><span class="next">下一页</span></div>
-                <div class="total">共<span>${recourdCount }</span>个商品</div>
+                <div class="total">共<span>${recordCount}</span>个商品</div>
             </div>
         </div>
-
         <a name="prolist" id="prolist"></a>
         <div class="p-list">
             <ul class="list-all">
-                <c:forEach items="${itemList }" var="item">
+                <c:forEach items="${itemList}" var="item">
                     <li>
                         <div class="l-wrap">
                             <div class="pic">
-                                <a class="trackref" href="http://localhost:8086/item/${item.id}.html" title=""
-                                   target="_blank">
-                                    <img src="${item.images[0] }" style="display:inline"/>
+                                <a class="trackref" href="/item/${item.itemId}.html" title="" target="_blank">
+                                    <img src="/upload/${item.iconPath}" style="display:inline"/>
                                 </a>
                             </div>
                             <div class="price">
-                                <span><span class="p-now">￥<strong><fmt:formatNumber groupingUsed="false"
-                                                                                     maxFractionDigits="2"
-                                                                                     minFractionDigits="2"
-                                                                                     value="${item.price / 100 }"/></strong></span><span
-                                        class="p-nor"></span><span class="active" style="">直降</span></span>
+                                <span>
+                                    <span class="p-now">￥
+                                        <strong>
+                                        <fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2"
+                                            value="${item.price}"/></strong></span>
+                                    <span class="p-nor"></span>
+                                    <span class="active" style="">直降</span></span>
                             </div>
                             <div class="title-a">
-                                <a class="trackref presaleSign_225865" href="http://localhost:8086/item/${item.id}.html"
-                                   target="_blank">${item.title }</a>
+                                <a class="trackref presaleSign_225865" href="/${item.itemId}.html"
+                                   target="_blank">${item.itemName}</a>
                             </div>
                             <div class="title-b" style=""><a class="trackref"
-                                                             href="http://localhost:8086/item/${item.id}.html"
-                                                             target="_blank">${sell_point }</a></div>
+                                                             href="/${item.itemId}.html"
+                                                             target="_blank">${item.itemCategory}</a></div>
                             <div class="comment">
                                 <div class="owner_shop_list">自营</div>
                             </div>
@@ -76,10 +76,8 @@
             </ul>
             <span class="clear"></span>
         </div>
-
         <div class="pages">
         </div>
-
     </div>
     <div class="left-box">
         <div class="catlist" id="cateall">
@@ -123,11 +121,8 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-    <jsp:include page="WEB-INF/jsp/commons/footer.jsp"/>
+    <jsp:include page="commons/footer.jsp"/>
     <script type="text/javascript" src="/js/common.js?v=20160713"></script>
     <script type="text/javascript" src="/js/cart.js?v=20160713"></script>
     <script type="text/javascript" src="/js/jquery.alerts.js"></script>

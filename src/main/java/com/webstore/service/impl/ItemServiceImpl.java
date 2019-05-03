@@ -27,5 +27,19 @@ public class ItemServiceImpl implements ItemService {
         return itemPageInfo.getList();
     }
 
+    public PageInfo<Item> findItemsByKeyword(String key, int currentPage, int pageSize){
+        ItemExample itemExample = new ItemExample();
+        ItemExample.Criteria criteria1 = itemExample.createCriteria();
+        criteria1.andItemNameLike("%"+key+"%");
+        ItemExample.Criteria criteria2 = itemExample.createCriteria();
+        criteria2.andItemCategoryLike("%"+key+"%");
+        //条件2必须手动添加
+        itemExample.or(criteria2);
+        PageHelper.startPage(currentPage, pageSize);
+        PageInfo<Item> itemPageInfo = new PageInfo<>(itemMapper.selectByExample(itemExample));
+        return itemPageInfo;
+    }
+
+
 
 }

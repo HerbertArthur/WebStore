@@ -20,40 +20,40 @@
       <div class="right">
         <ul>
           <li class="title">购物指南</li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/140/133.html" target="_blank">积分制度</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/140/132.html" target="_blank">会员介绍</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/140/128.html" target="_blank">购物流程</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/140/138.html" target="_blank">常见问题</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/140/133.html" target="_blank">积分制度</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/140/132.html" target="_blank">会员介绍</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/140/128.html" target="_blank">购物流程</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/140/138.html" target="_blank">常见问题</a></li>
         </ul>
         <ul>
           <li class="title">配送服务</li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/141/134.html" target="_blank">配送政策</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/141/136.html" target="_blank">开箱验货</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/141/137.html" target="_blank">配送运费</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/141/135.html" target="_blank">配送范围</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/141/134.html" target="_blank">配送政策</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/141/136.html" target="_blank">开箱验货</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/141/137.html" target="_blank">配送运费</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/141/135.html" target="_blank">配送范围</a></li>
         </ul>
         <ul>
           <li class="title">支付方式</li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/143/139.html" target="_blank">货到付款</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/143/141.html" target="_blank">在线支付</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/143/131.html" target="_blank">优选卡</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/143/142.html" target="_blank">发票制度</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/143/139.html" target="_blank">货到付款</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/143/141.html" target="_blank">在线支付</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/143/131.html" target="_blank">优选卡</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/143/142.html" target="_blank">发票制度</a></li>
         </ul>
         <ul>
           <li class="title">售后服务</li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/144/145.html" target="_blank">退款说明</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/144/144.html" target="_blank">退换货流程</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/144/143.html" target="_blank">退换货政策</a></li>
-          <li><a rel="nofollow" href="http://help.e3mall.cn/390/4643.html" target="_blank">隐私条款</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/144/145.html" target="_blank">退款说明</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/144/144.html" target="_blank">退换货流程</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/144/143.html" target="_blank">退换货政策</a></li>
+          <li><a rel="nofollow" href="/help.e3mall.cn/390/4643.html" target="_blank">隐私条款</a></li>
         </ul>
 <ul class="sj">
 <li class="title">商家中心</li>
-<li><a rel="nofollow" href="http://help.e3mall.cn/392/7232.html" target="_blank">商家规则</a></li>
+<li><a rel="nofollow" href="/help.e3mall.cn/392/7232.html" target="_blank">商家规则</a></li>
 </ul>
       </div>
 	  <div class="left">
         <ul class="f_ios">
-          <li><a href="http://app.e3mall.cn" target="_blank">手机客户端</a></li>
+          <li><a href="/app.e3mall.cn" target="_blank">手机客户端</a></li>
           <li><span></span></li>
         </ul>
         <ul class="f_wx">
@@ -71,7 +71,7 @@
 	<script type="text/JavaScript">function CNNIC_change(cnnic){var str= document.getElementById(cnnic).href;var str1 =str.substring(0,(str.length-6));str1+=CNNIC_RndNum(6); document.getElementById(cnnic).href=str1;}function CNNIC_RndNum(k){var rnd=""; for (var i=0;i < k;i++) rnd+=Math.floor(Math.random()*10); return rnd;}</script>
 	<!--可信网站图片LOGO安装结束-->
 	</div>
-	<div class="bottom_sm"><a id="_pingansec_bottomimagesmall_shiming" href="http://si.trustutn.org/info?sn=332160125020173365693&amp;certType=1" target="_blank"><img src="/images/bottom_sm.png"></a></div>
+	<div class="bottom_sm"><a id="_pingansec_bottomimagesmall_shiming" href="/si.trustutn.org/info?sn=332160125020173365693&amp;certType=1" target="_blank"><img src="/images/bottom_sm.png"></a></div>
 	<div class="clear1"></div>
       <div class="siteinfo">
 

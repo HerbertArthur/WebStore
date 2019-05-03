@@ -1946,7 +1946,7 @@ $(document).ready(function(){
             Goods.zuheProduct(_SF_CFG.zuheProducts, Goods.zuheProductTpl);
         }
         //getPackage();
-    getAllCity();
+    // getAllCity();
     $("#add-sell-num").removeClass('disable');
         //Goods.shipfee(_SF_CFG.productId, Goods.shipfeeTpl);
     }

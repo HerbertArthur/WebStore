@@ -14,9 +14,9 @@
 		</div>
     <div class="index_promo"></div>
     <div class="search">
-      <form action="${ctx}/search.jsp" id="searchForm" name="query" method="GET">
-        <input type="text" class="text keyword ac_input" name="keyword" id="keyword" value="" style="color: rgb(153, 153, 153);" onkeydown="javascript:if(event.keyCode==13) search_keys('searchForm');" autocomplete="off">
-        <input type="button" value="" class="submit" onclick="search_keys('searchForm')">
+      <form action="${ctx}/item/searchItems.do" id="searchForm" name="query" method="GET">
+        <input type="text" class="text keyword ac_input" name="keyword" id="keyword" value="" style="color: rgb(153, 153, 153);" onkeydown="javascript:if(event.keyCode==13)search_keys('searchForm');" autocomplete="off">
+        <input type="button" value="" class="submit" onclick="$('#searchForm').submit();">
       </form>
       <div class="search_hot"><a target="_blank" href="#">大闸蟹</a><a target="_blank" href="#">石榴</a><a target="_blank" href="#">松茸</a><a target="_blank" href="#">牛排</a><a target="_blank" href="#">白虾</a><a target="_blank" href="#">全脂牛奶</a><a target="_blank" href="#">洋河</a><a target="_blank" href="#">绿豆</a><a target="_blank" href="#">一品玉</a></div>
     </div>

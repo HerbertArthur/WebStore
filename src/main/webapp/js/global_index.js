@@ -1037,7 +1037,6 @@ $.Autocompleter = function(input, options) {
 		// track last key pressed
 		lastKeyPressCode = event.keyCode;
 		switch(event.keyCode) {
-		
 			case KEY.UP:
 				event.preventDefault();
 				if ( select.visible() ) {

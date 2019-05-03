@@ -20,12 +20,12 @@
 <body>
 	<!-- header -->
 	<div class="header">
-		<a href="http://www.e3mall.cn"><img src="/images/logo.png" border="0"><span>欢迎登录</span></a>
+		<a href="#"><img src="/images/logo.png" border="0"><span>欢迎登录</span></a>
 	</div>
 	<!-- login_main -->
 	<div class="login_main clear">
 		<div class="pic">
-			<a href="http://www.e3mall.cn/html/activity/1472720729.html" target="_blank"><img src="/images/06f42c372620f92b40da77a8b23cdf7f.png"></a>
+			<a href="localhost:8080" target="_blank"><img src="/images/06f42c372620f92b40da77a8b23cdf7f.png"></a>
 		</div>
 		<!-- login -->
 		<div class="login">

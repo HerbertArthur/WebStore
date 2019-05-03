@@ -35,6 +35,7 @@
 <jsp:include page="WEB-INF/jsp/commons/mainmenu.jsp" />
 <!-- header end -->
 <!----row1------->
+<input hidden>
 <div class="slide_show" id="slide_show">
 	<div class="indexW">
       <div id="index_slide" class="slide_wrap">
@@ -471,11 +472,8 @@
 </body>
 <script>
 	/*把js写到global_index.js*/
-	function addItem2Cart(itemId){
-	    alert('itemId='+itemId);
-        let userid = '${user.userId}';
+    //口碑甄选
 
-	}
 
 </script>
 </html>

@@ -21,8 +21,8 @@
 <!-------面包线 linknav--------->
 <div class="linknav">
     <div class="schArticle">
-        <a href="/article/search?keyword=%E6%9C%88%E9%A5%BC" target="_blank">找到和“<span>${query}</span>”相关的文章<span
-                id="articlenum">${totalPages}</span>篇&gt;&gt;
+        <a href="/article/search?keyword=%E6%9C%88%E9%A5%BC" target="_blank">找到和“<span>${query}</span>”相关的商品<span
+                id="articlenum">${totalPages}</span>个&gt;&gt;
         </a>
     </div>
     <div class="breadcrumb">

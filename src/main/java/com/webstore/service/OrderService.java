@@ -1,5 +1,6 @@
 package com.webstore.service;
 
+import com.github.pagehelper.PageInfo;
 import com.webstore.domain.Order;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface OrderService {
      * @param userId
      * @return
      */
-    List<Order> selectOrderByUser(Long userId);
+
+    PageInfo<Order> selectOrderByUser(Long userId, int currentPage, int pageSize);
 }

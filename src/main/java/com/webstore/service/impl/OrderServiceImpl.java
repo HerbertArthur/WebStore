@@ -1,7 +1,11 @@
 package com.webstore.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.webstore.dao.ItemMapper;
 import com.webstore.dao.OrderMapper;
+import com.webstore.domain.Item;
 import com.webstore.domain.ItemExample;
 import com.webstore.domain.Order;
 import com.webstore.domain.OrderExample;
@@ -19,14 +23,17 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ItemMapper itemMapper;
 
-    public List<Order> selectOrderByUser(Long userId){
+    public PageInfo<Order> selectOrderByUser(Long userId, int currentPage, int pageSize){
         OrderExample orderExample = new OrderExample();
         OrderExample.Criteria criteria = orderExample.createCriteria();
         criteria.andUserIdEqualTo(userId);
-        List<Order> orderList = orderMapper.selectByExample(orderExample);
-        for (Order order : orderList) {
+        PageHelper.startPage(currentPage, pageSize);
+        PageInfo<Order> orderPageInfo = new PageInfo<>(orderMapper.selectByExample(orderExample));
+        for (Order order : orderPageInfo.getList()) {
             order.setItem(itemMapper.selectByPrimaryKey(order.getItemId()));
         }
-        return orderList;
+        return orderPageInfo;
     }
+
+
 }

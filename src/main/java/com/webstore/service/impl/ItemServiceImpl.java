@@ -40,6 +40,10 @@ public class ItemServiceImpl implements ItemService {
         return itemPageInfo;
     }
 
+    public Item findItemById(Long itemId){
+        return itemMapper.selectByPrimaryKey(itemId);
+    }
+
 
 
 }

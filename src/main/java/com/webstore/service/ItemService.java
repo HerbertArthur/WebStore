@@ -17,5 +17,12 @@ public interface ItemService {
      * @param key
      * @return
      */
-    public PageInfo<Item> findItemsByKeyword(String key, int currentPage, int pageSize);
+    PageInfo<Item> findItemsByKeyword(String key, int currentPage, int pageSize);
+
+    /**
+     * 根据商品id（item_id）获取商品信息
+     * @param itemId
+     * @return
+     */
+    Item findItemById(Long itemId);
 }

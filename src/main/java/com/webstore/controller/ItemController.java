@@ -58,4 +58,12 @@ public class ItemController {
         }
         return modelAndView;
     }
+
+
+    @RequestMapping("test")
+    public void test(){
+        Item item = itemService.findItemById(69l);
+        System.out.println(item.getPrice());
+
+    }
 }

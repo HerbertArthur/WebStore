@@ -74,7 +74,6 @@
 	<div class="bottom_sm"><a id="_pingansec_bottomimagesmall_shiming" href="/si.trustutn.org/info?sn=332160125020173365693&amp;certType=1" target="_blank"><img src="/images/bottom_sm.png"></a></div>
 	<div class="clear1"></div>
       <div class="siteinfo">
-
 			<span>
 				<a href="#" rel="nofollow" class="footerlink1">关于我们</a> |
 				<a href="#" rel="nofollow" class="footerlink1">联系我们</a> |

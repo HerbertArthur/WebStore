@@ -471,5 +471,11 @@
 </body>
 <script>
 	/*把js写到global_index.js*/
+	function addItem2Cart(itemId){
+	    alert('itemId='+itemId);
+        let userid = '${user.userId}';
+
+	}
+
 </script>
 </html>

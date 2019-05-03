@@ -6,20 +6,19 @@
 
         <ul class="fr topTh">
             <li class="login" id="login">
-                <c:set var="user" scope="session" value="${user}"></c:set>
-                <c:if test="${null != user}">
+            <c:set var="user" scope="session" value="${user}"></c:set>
+            <c:if test="${null != user}">
                 <span id="loginbar" style="margin-right: 15px;">
-            <li class="menus">
-                <a name="sfbest_hp_hp_head_home1" href="#" rel="nofollow"
-                   class="trackref t">${user.userName}</a><b></b>
-                <span class="outline"></span>
-                <span class="blank"></span>
-                <div class="dd">
-                    <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">退出登录</a></div>
-                </div>
-            </li>
-
-            </span>
+                    <li class="menus">
+                        <a name="sfbest_hp_hp_head_home1" href="#" rel="nofollow" class="trackref t">
+                            ${user.userName}</a><b></b>
+                        <span class="outline"></span>
+                        <span class="blank"></span>
+                        <div class="dd">
+                            <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">退出登录</a></div>
+                        </div>
+                    </li>
+                </span>
             </c:if>
             <c:if test="${null == user}">
                  <span id="loginbar" style="margin-right: 15px;">
@@ -27,10 +26,9 @@
                      <a href="/register.jsp">免费注册</a>
       	        </span>
             </c:if>
-
             </li>
             <!--<li id='qiyeLogin'><a href='http://www.sfme.me/login.jhtml' target='_blank' rel='nofollow'>员工福利</a></li>-->
-            <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="#" rel="nofollow">我的订单</a>
+            <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="${ctx}/order/getUserOrders.do?userId=${user.userId}" rel="nofollow">我的订单</a>
             </li>
             <li class="menus">
                 <a name="sfbest_hp_hp_head_home1" href="#" rel="nofollow" class="trackref t">我的优选</a><b></b>

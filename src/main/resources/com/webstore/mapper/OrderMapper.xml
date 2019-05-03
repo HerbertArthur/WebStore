@@ -82,7 +82,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from shop_order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,21 +93,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from order
+    from shop_order
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from order
+    delete from shop_order
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.webstore.domain.OrderExample" >
-    delete from order
+    delete from shop_order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.Order" >
-    insert into order (id, order_num, item_id, 
+    insert into shop_order (id, order_num, item_id, 
       item_count, user_id, total_price, 
       description, is_payed, create_time, 
       status, val1)
@@ -117,7 +117,7 @@
       #{status,jdbcType=BIT}, #{val1,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.Order" >
-    insert into order
+    insert into shop_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -190,13 +190,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.webstore.domain.OrderExample" resultType="java.lang.Integer" >
-    select count(*) from order
+    select count(*) from shop_order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update order
+    update shop_order
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -237,7 +237,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update order
+    update shop_order
     set id = #{record.id,jdbcType=BIGINT},
       order_num = #{record.orderNum,jdbcType=VARCHAR},
       item_id = #{record.itemId,jdbcType=BIGINT},
@@ -254,7 +254,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Order" >
-    update order
+    update shop_order
     <set >
       <if test="orderNum != null" >
         order_num = #{orderNum,jdbcType=VARCHAR},
@@ -290,7 +290,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Order" >
-    update order
+    update shop_order
     set order_num = #{orderNum,jdbcType=VARCHAR},
       item_id = #{itemId,jdbcType=BIGINT},
       item_count = #{itemCount,jdbcType=INTEGER},

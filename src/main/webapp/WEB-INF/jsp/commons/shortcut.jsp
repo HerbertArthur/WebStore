@@ -3,7 +3,6 @@
 <jsp:include page="/initialPage.jsp"></jsp:include>
 <div class="topMenu">
     <div class="pW">
-
         <ul class="fr topTh">
             <li class="login" id="login">
             <c:set var="user" scope="session" value="${user}"></c:set>
@@ -28,7 +27,7 @@
             </c:if>
             </li>
             <!--<li id='qiyeLogin'><a href='http://www.sfme.me/login.jhtml' target='_blank' rel='nofollow'>员工福利</a></li>-->
-            <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="${ctx}/order/getUserOrders.do?userId=${user.userId}" rel="nofollow">我的订单</a>
+            <li class="myOrder"><a name="sfbest_hp_hp_head_OrderList" class="trackref" href="javascript:myOrders();" rel="nofollow">我的订单</a>
             </li>
             <li class="menus">
                 <a name="sfbest_hp_hp_head_home1" href="#" rel="nofollow" class="trackref t">我的优选</a><b></b>
@@ -40,7 +39,6 @@
                     <div><a href="http://localhost:8080/cart.jsp" rel="nofollow">我的购物车</a></div>
                 </div>
             </li>
-
 
             <li class="allCat"><em class="site">网站导航</em><s></s><span class="outline"></span> <span
                     class="blank"></span>
@@ -94,4 +92,16 @@
     </div>
     <script type="text/javascript" src="/js/e3mall.js"></script>
     <script type="text/javascript" src="/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        function myOrders() {
+            let userId = '${user.userId}';
+            if (null == userId || 0 == userId || '' == userId){
+                jAlert('您还未登录，请登录...', '提示', function () {
+                    location.href = '${ctx}'+'/login.jsp';
+                });
+            } else {
+                location.href = '${ctx}'+'/order/getUserOrders.do?userId=' + userId;
+            }
+        }
+    </script>
 </div>

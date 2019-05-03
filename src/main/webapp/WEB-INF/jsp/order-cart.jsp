@@ -33,7 +33,7 @@
 	<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
 	<input type="hidden" name="paymentType" value="2"/>
 	<input type="hidden" name="postFee" value="10"/>
-	<c:forEach items="${cartList }" var="cart" varStatus="status">
+	<c:forEach items="${cartList}" var="cart" varStatus="status">
 		<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
 		<input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>
 		<input type="hidden" name="orderItems[${status.index}].num" value="${cart.num }"/>
@@ -101,7 +101,6 @@
   <span class="clear"></span>
   <div class="orderPItem">
   <div id="producthtml">
-
 	<div id="chaidanorder2" class="">
 		<div class="orderItem">
 			<div class="dateShow">
@@ -118,7 +117,7 @@
 					<div class="tCol pWeight">重量(含包装)</div>
 					<div class="tCol pSubtotal">小计</div>
 				</div>
-				<c:forEach items="${cartList }" var="cart" varStatus="status">
+				<c:forEach items="${cartList}" var="cart" varStatus="status">
 				<div class="orderPInfo">
 					<div class="pItem">
 						<a href="http://localhost:8086/item/${cart.id}.html" target="_blank">
@@ -137,20 +136,16 @@
 					<div class="pItem pInventory" pid="57111">现货</div>
 					<div class="pItem pQuantity">${cart.num}</div>
 					<div class="pItem pWeight">0.72kg</div>
-					<div class="pItem pSubtotal">¥${cart.price / 100 * cart.num}</div> 
+					<div class="pItem pSubtotal" style="width: 90px">¥${cart.price / 100 * cart.num}</div>
 					<span class="clear"></span>
 				</div>
 				</c:forEach>
-				<div class="orderPInfo order_xj">
-					<span class="sp1">运费小计：</span> <span class="sp2">¥10</span>
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
   <div class="orderItem" style="position:relative;padding-top:10px;">
-
     <div id="ordercoupon1" class="ordercoupon"><span id="ordercoupon"></span></div>
     <div class="order-info" style="z-index: -1;">
       <div class="orderWeight fl">商品总重量：0.72kg（含包装）</div>

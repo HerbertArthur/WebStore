@@ -353,7 +353,7 @@ a.submit5:hover{color:#fff;background:url(../images/productinfo.png) no-repeat -
 .starnumber{width:40px;float:left; position:absolute;}
 /*页脚*/
 .pageFooter{ width:1000px;margin:0 auto;}
-.pageFooter .middle{ float:left; width:240px; height:145px; margin:20px 0px 0px 0px; background:url(/images/logo.jpg) no-repeat left top;}
+.pageFooter .middle{ float:left; width:240px; height:145px; margin:20px 0px 0px 0px; background:url(/images/logo.png) no-repeat left top;}
 .pageFooter .middle ul{ padding-top:85px;}
 .pageFooter .middle .kefu{ font-size:20px; color:#646464; font-weight:bold; padding:6px 0;}
 .pageFooter .left{float:left;margin:35px 0 0 0;height:145px;}

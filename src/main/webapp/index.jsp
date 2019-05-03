@@ -12,6 +12,7 @@
 <meta property="wb:webmaster" content="3a008ad947166307">
     <link rel="stylesheet" type="text/css" href="/css/base_w1200.css?v=2016071333">
     <link rel="stylesheet" type="text/css" href="/css/index.css?v=2016071312">
+	<link rel="stylesheet" type="text/css" href="/css/jquery.alerts.css" />
 <style id="style-1-cropbar-clipper">
 .en-markup-crop-options {
     top: 18px !important;
@@ -29,6 +30,7 @@
 </head>
 <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/js/global_index.js"></script>
+<script type="text/javascript" src="/js/jquery.alerts.js"></script>
 <body>
 <!-- header start -->
 <jsp:include page="WEB-INF/jsp/commons/header.jsp" />
@@ -466,7 +468,7 @@
 <!--楼层 end -->
 
 <!-- footer start -->
-<jsp:include page="WEB-INF/jsp/commons/footer.jsp" />
+<jsp:include page="WEB-INF/jsp/commons/footer.jsp"/>
 <!-- footer end -->
 </body>
 <script>

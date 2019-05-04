@@ -7,12 +7,16 @@ import com.webstore.dao.WatchedMapper;
 import com.webstore.domain.Watched;
 import com.webstore.domain.WatchedExample;
 import com.webstore.service.WatchedService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WatchedServiceImpl implements WatchedService {
 
+    @Autowired
     private WatchedMapper watchedMapper;
+
+    @Autowired
     private ItemMapper itemMapper;
 
     public PageInfo<Watched> selectHistoryByUser(Long userId, int currentPage, int pageSize) {
@@ -20,6 +24,7 @@ public class WatchedServiceImpl implements WatchedService {
         WatchedExample.Criteria criteria = watchedExample.createCriteria();
         criteria.andUserIdEqualTo(userId);
         PageHelper.startPage(currentPage, pageSize);
+        Watched watched1 = watchedMapper.selectByPrimaryKey(1l);
         PageInfo<Watched> watchedPageInfo = new PageInfo<>(watchedMapper.selectByExample(watchedExample));
         for (Watched watched : watchedPageInfo.getList()) {
             watched.setItem(itemMapper.selectByPrimaryKey(watched.getItemId()));

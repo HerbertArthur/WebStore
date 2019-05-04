@@ -1,0 +1,30 @@
+package com.webstore.service.impl;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.webstore.dao.ItemMapper;
+import com.webstore.dao.WatchedMapper;
+import com.webstore.domain.Watched;
+import com.webstore.domain.WatchedExample;
+import com.webstore.service.WatchedService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class WatchedServiceImpl implements WatchedService {
+
+    private WatchedMapper watchedMapper;
+    private ItemMapper itemMapper;
+
+    public PageInfo<Watched> selectHistoryByUser(Long userId, int currentPage, int pageSize) {
+        WatchedExample watchedExample = new WatchedExample();
+        WatchedExample.Criteria criteria = watchedExample.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        PageHelper.startPage(currentPage, pageSize);
+        PageInfo<Watched> watchedPageInfo = new PageInfo<>(watchedMapper.selectByExample(watchedExample));
+        for (Watched watched : watchedPageInfo.getList()) {
+            watched.setItem(itemMapper.selectByPrimaryKey(watched.getItemId()));
+        }
+
+        return watchedPageInfo;
+    }
+}

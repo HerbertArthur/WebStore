@@ -35,7 +35,7 @@
                 <span class="blank"></span>
                 <div class="dd">
                     <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">我的收藏</a></div>
-                    <div><a name="sfbest_hp_hp_head_home3" class="trackref" href="#" rel="nofollow">我的足迹</a></div>
+                    <div><a name="sfbest_hp_hp_head_home3" class="trackref" href="javascript:myHistory();" rel="nofollow">我的足迹</a></div>
                     <div><a href="http://localhost:8080/cart.jsp" rel="nofollow">我的购物车</a></div>
                 </div>
             </li>
@@ -101,6 +101,17 @@
                 });
             } else {
                 location.href = '${ctx}'+'/order/getUserOrders.do?userId=' + userId;
+            }
+        }
+
+        function myHistory() {
+            let userId = '${user.userId}';
+            if (null == userId || 0 == userId || '' == userId){
+                jAlert('您还未登录，请登录...', '提示', function () {
+                    location.href = '${ctx}'+'/login.jsp';
+                });
+            } else {
+                location.href = '${ctx}'+'/history/historyItems.do?userId=' + userId;
             }
         }
     </script>

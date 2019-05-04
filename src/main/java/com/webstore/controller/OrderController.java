@@ -1,15 +1,16 @@
 package com.webstore.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.webstore.domain.Item;
 import com.webstore.domain.Order;
-import com.webstore.service.ItemService;
+import com.webstore.domain.Watched;
 import com.webstore.service.OrderService;
-import com.webstore.utils.CommUtils;
+import com.webstore.service.WatchedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 @Controller
 @RequestMapping("/order")
@@ -17,13 +18,13 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-    private ItemService itemService;
-
 
     /**
      * 我的订单
      *
      * @param userId
+     * @param currentPage
+     * @param pageSize
      */
     @RequestMapping("/getUserOrders")
     public ModelAndView getUserOrders(Long userId, Integer currentPage, Integer pageSize) {
@@ -40,4 +41,6 @@ public class OrderController {
 
         return modelAndView;
     }
+
+
 }

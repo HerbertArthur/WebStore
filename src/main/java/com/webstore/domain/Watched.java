@@ -11,6 +11,16 @@ public class Watched {
 
     private Date created;
 
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     public Long getId() {
         return id;
     }

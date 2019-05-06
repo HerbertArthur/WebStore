@@ -1,5 +1,9 @@
 package com.webstore.domain;
 
+import com.webstore.utils.KmeansField;
+
+import java.util.Date;
+
 public class User {
     private Long userId;
 
@@ -7,7 +11,13 @@ public class User {
 
     private String password;
 
-    private Boolean sex;
+    @KmeansField
+    private Integer sex;
+
+    private Date birth;
+
+    @KmeansField
+    private Integer age;
 
     private String mail;
 
@@ -15,7 +25,18 @@ public class User {
 
     private String address;
 
-    private Boolean status;
+    @KmeansField
+    private Long buyNum;
+
+    private Integer status;
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
     public Long getUserId() {
         return userId;
@@ -41,12 +62,20 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Boolean getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
     public String getMail() {
@@ -73,11 +102,19 @@ public class User {
         this.address = address == null ? null : address.trim();
     }
 
-    public Boolean getStatus() {
+    public Long getBuyNum() {
+        return buyNum;
+    }
+
+    public void setBuyNum(Long buyNum) {
+        this.buyNum = buyNum;
+    }
+
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

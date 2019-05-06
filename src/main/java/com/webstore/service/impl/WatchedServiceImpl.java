@@ -24,7 +24,6 @@ public class WatchedServiceImpl implements WatchedService {
         WatchedExample.Criteria criteria = watchedExample.createCriteria();
         criteria.andUserIdEqualTo(userId);
         PageHelper.startPage(currentPage, pageSize);
-        Watched watched1 = watchedMapper.selectByPrimaryKey(1l);
         PageInfo<Watched> watchedPageInfo = new PageInfo<>(watchedMapper.selectByExample(watchedExample));
         for (Watched watched : watchedPageInfo.getList()) {
             watched.setItem(itemMapper.selectByPrimaryKey(watched.getItemId()));

@@ -1,6 +1,7 @@
 package com.webstore.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserExample {
@@ -364,6 +365,66 @@ public class UserExample {
             return (Criteria) this;
         }
 
+        public Criteria andBirthIsNull() {
+            addCriterion("birth is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthIsNotNull() {
+            addCriterion("birth is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthEqualTo(Date value) {
+            addCriterion("birth =", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthNotEqualTo(Date value) {
+            addCriterion("birth <>", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthGreaterThan(Date value) {
+            addCriterion("birth >", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthGreaterThanOrEqualTo(Date value) {
+            addCriterion("birth >=", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthLessThan(Date value) {
+            addCriterion("birth <", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthLessThanOrEqualTo(Date value) {
+            addCriterion("birth <=", value, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthIn(List<Date> values) {
+            addCriterion("birth in", values, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthNotIn(List<Date> values) {
+            addCriterion("birth not in", values, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthBetween(Date value1, Date value2) {
+            addCriterion("birth between", value1, value2, "birth");
+            return (Criteria) this;
+        }
+
+        public Criteria andBirthNotBetween(Date value1, Date value2) {
+            addCriterion("birth not between", value1, value2, "birth");
+            return (Criteria) this;
+        }
+
         public Criteria andMailIsNull() {
             addCriterion("mail is null");
             return (Criteria) this;
@@ -571,6 +632,66 @@ public class UserExample {
 
         public Criteria andAddressNotBetween(String value1, String value2) {
             addCriterion("address not between", value1, value2, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumIsNull() {
+            addCriterion("buy_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumIsNotNull() {
+            addCriterion("buy_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumEqualTo(Long value) {
+            addCriterion("buy_num =", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumNotEqualTo(Long value) {
+            addCriterion("buy_num <>", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumGreaterThan(Long value) {
+            addCriterion("buy_num >", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumGreaterThanOrEqualTo(Long value) {
+            addCriterion("buy_num >=", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumLessThan(Long value) {
+            addCriterion("buy_num <", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumLessThanOrEqualTo(Long value) {
+            addCriterion("buy_num <=", value, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumIn(List<Long> values) {
+            addCriterion("buy_num in", values, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumNotIn(List<Long> values) {
+            addCriterion("buy_num not in", values, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumBetween(Long value1, Long value2) {
+            addCriterion("buy_num between", value1, value2, "buyNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andBuyNumNotBetween(Long value1, Long value2) {
+            addCriterion("buy_num not between", value1, value2, "buyNum");
             return (Criteria) this;
         }
 

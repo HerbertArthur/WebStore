@@ -14,7 +14,7 @@
                         <span class="outline"></span>
                         <span class="blank"></span>
                         <div class="dd">
-                            <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="#" rel="nofollow">退出登录</a></div>
+                            <div><a name="sfbest_hp_hp_head_home4" class="trackref" href="javascript:logout();" rel="nofollow">退出登录</a></div>
                         </div>
                     </li>
                 </span>
@@ -113,6 +113,16 @@
             } else {
                 location.href = '${ctx}'+'/history/historyItems.do?userId=' + userId;
             }
+        }
+
+        function logout() {
+            $.post('${ctx}'+'/user/logout.do',function(data){
+                if(data.status == 500) {
+                    jAlert('注销成功',"提示",function () {
+                        location.href = "${ctx}/index.jsp";
+                    })
+                }
+            })
         }
     </script>
 </div>

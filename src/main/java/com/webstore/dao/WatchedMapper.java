@@ -1,5 +1,6 @@
 package com.webstore.dao;
 
+import com.webstore.domain.FPGWatched;
 import com.webstore.domain.Watched;
 import com.webstore.domain.WatchedExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface WatchedMapper {
     int updateByPrimaryKeySelective(Watched record);
 
     int updateByPrimaryKey(Watched record);
+
+    List<FPGWatched> selectDistinctWatched(Long userId);
 }

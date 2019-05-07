@@ -25,7 +25,7 @@ public interface ItemService {
      * @param itemId
      * @return
      */
-    Item findItemById(Long itemId);
+    Item getItemById(Long itemId);
 
 
 }

@@ -7,13 +7,13 @@ public class KmeansUser {
     private String userName;
 
     @KmeansField
-    private Double sex;
+    private double sex;
 
     @KmeansField
-    private Double age;
+    private double age;
 
     @KmeansField
-    private Double buyNum;
+    private double buyNum;
 
     public Long getUserId() {
         return userId;
@@ -31,27 +31,27 @@ public class KmeansUser {
         this.userName = userName;
     }
 
-    public Double getSex() {
+    public double getSex() {
         return sex;
     }
 
-    public void setSex(Double sex) {
+    public void setSex(double sex) {
         this.sex = sex;
     }
 
-    public Double getAge() {
+    public double getAge() {
         return age;
     }
 
-    public void setAge(Double age) {
+    public void setAge(double age) {
         this.age = age;
     }
 
-    public Double getBuyNum() {
+    public double getBuyNum() {
         return buyNum;
     }
 
-    public void setBuyNum(Double buyNum) {
+    public void setBuyNum(double buyNum) {
         this.buyNum = buyNum;
     }
 }

@@ -156,7 +156,6 @@ public class Kmeans<T> {
             if (ps == null || ps.size() == 0) {
                 return t;
             }
-
             double[] ds = new double[fieldNames.size()];
             for (T vo : ps) {
                 for (int i = 0; i < fieldNames.size(); i++) {
@@ -170,20 +169,16 @@ public class Kmeans<T> {
                 }
 
             }
-
             for (int i = 0; i < fieldNames.size(); i++) {
                 ds[i] = ds[i] / ps.size();
                 String fieldName = fieldNames.get(i);
-
                 /* 给对象设值 */
                 String setName = "set"
                         + fieldName.substring(0, 1).toUpperCase()
                         + fieldName.substring(1);
-
+                System.out.println(">>>>>"+t+","+setName+","+ds[i]);
                 invokeMethod(t,setName,new Class[]{double.class},ds[i]);
-
             }
-
             return t;
         } catch (Exception ex) {
             ex.printStackTrace();

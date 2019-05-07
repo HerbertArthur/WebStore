@@ -4,11 +4,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.webstore.dao.ItemMapper;
 import com.webstore.dao.WatchedMapper;
+import com.webstore.domain.FPGWatched;
 import com.webstore.domain.Watched;
 import com.webstore.domain.WatchedExample;
 import com.webstore.service.WatchedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class WatchedServiceImpl implements WatchedService {
@@ -30,5 +33,10 @@ public class WatchedServiceImpl implements WatchedService {
         }
 
         return watchedPageInfo;
+    }
+
+    @Override
+    public List<FPGWatched> getDailyWatchedByuId(Long uId) {
+        return watchedMapper.selectDistinctWatched(uId);
     }
 }

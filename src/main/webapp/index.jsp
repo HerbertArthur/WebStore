@@ -151,67 +151,68 @@
 					<%--</li>--%>
 				</ul>
 				<ul class="bsmall" id="smallPerfect">
-					<li class="price_list0" goods="37194" eid="b_37194_1"
-						id="cx_b_37194_1"><a
-						href="http://www.e3mall.cn/html/products/38/1800037194.html#trackref=sfbest_hp_hp_goods_small-item1"
-						title="精气神 山黑猪猪蹄 320g" target="_blank"><img class="lazy"
-							src="/images/html/c3449a684bebe21f5b6c6c79e46791ff.jpg"
-							style="display: inline;"></a>
-					<div class="gBtn p-btn bbtn" style="top: 210px;">
-							<a pid="37194"
-								data_url="http://p02.e3mall.cn/2014/1800037194/middle_1800037194_3_10/160x160.jpg"
-								href="javascript:void(0)" indexflag="1">加入购物车</a>
-						</div>
-						<div class="bprice" id="priceK_b_37194_1">
-							<span><sup>￥</sup></span>27.8
-						</div></li>
-					<li class="price_list0" goods="219085" eid="b_219085_1"
-						id="cx_b_219085_1"><a
-						href="http://www.e3mall.cn/html/products/220/1500219085.html#trackref=sfbest_hp_hp_goods_small-item2"
-						title="八马茶业 福鼎白茶(白牡丹）62.5g*2" target="_blank"><img
-							class="lazy"
-							src="/images/html/042cc65a4fb9899878f2f37235ca1793.jpg"
-							style="display: inline;"></a>
-					<div class="gBtn p-btn bbtn" style="top: 210px;">
-							<a pid="219085"
-								data_url="http://p02.e3mall.cn/2016/1500219085/middle_1500219085_1_1/160x160.jpg"
-								href="javascript:void(0)" indexflag="1">加入购物车</a>
-						</div>
-						<div class="bprice" id="priceK_b_219085_1">
-							<span><sup>￥</sup></span>75
-						</div></li>
-					<li class="price_list0" goods="55213" eid="b_55213_1"
-						id="cx_b_55213_1"><a
-						href="http://www.e3mall.cn/html/products/56/1400055213.html#trackref=sfbest_hp_hp_goods_small-item3"
-						title="爱之湾 桃红莫斯卡托甜起泡酒 750ml" target="_blank"><img class="lazy"
-							data="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"
-							alt="爱之湾 桃红莫斯卡托甜起泡酒 750ml"
-							src="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"
-							style="display: inline;"></a>
-					<div class="gBtn p-btn bbtn">
-							<a pid="55213"
-								data_url="http://p02.e3mall.cn/2014/1400055213/middle_1400055213_1_1/160x160.jpg"
-								href="javascript:void(0)" indexflag="1">加入购物车</a>
-						</div>
-						<div class="bprice" id="priceK_b_55213_1">
-							<span><sup>￥</sup></span>38.5
-						</div></li>
-					<li class="price_list0" goods="167461" eid="b_167461_1"
-						id="cx_b_167461_1"><a
-						href="http://www.e3mall.cn/html/products/168/1300167461.html#trackref=sfbest_hp_hp_goods_small-item4"
-						title="北纯  有机绿豆 1kg" target="_blank"><img class="lazy"
-							data="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"
-							alt="北纯  有机绿豆 1kg"
-							src="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"
-							style="display: inline;"></a>
-					<div class="gBtn p-btn bbtn">
-							<a pid="167461"
-								data_url="http://p02.e3mall.cn/2015/1300167461/middle_1300167461_1_1/160x160.jpg"
-								href="javascript:void(0)" indexflag="1">加入购物车</a>
-						</div>
-						<div class="bprice" id="priceK_b_167461_1">
-							<span><sup>￥</sup></span>22.2
-						</div></li>
+					<%--<li class="price_list0" goods="37194" eid="b_37194_1"--%>
+						<%--id="cx_b_37194_1"><a--%>
+						<%--href="http://www.e3mall.cn/html/products/38/1800037194.html#trackref=sfbest_hp_hp_goods_small-item1"--%>
+						<%--title="精气神 山黑猪猪蹄 320g" target="_blank"><img class="lazy"--%>
+							<%--src="/images/html/c3449a684bebe21f5b6c6c79e46791ff.jpg"--%>
+							<%--style="display: inline;"></a>--%>
+					<%--<div class="gBtn p-btn bbtn" style="top: 210px;">--%>
+							<%--<a pid="37194"--%>
+								<%--data_url="http://p02.e3mall.cn/2014/1800037194/middle_1800037194_3_10/160x160.jpg"--%>
+								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
+						<%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_37194_1">--%>
+							<%--<span><sup>￥</sup></span>27.8--%>
+						<%--</div>--%>
+					<%--</li>--%>
+					<%--<li class="price_list0" goods="219085" eid="b_219085_1"--%>
+						<%--id="cx_b_219085_1"><a--%>
+						<%--href="http://www.e3mall.cn/html/products/220/1500219085.html#trackref=sfbest_hp_hp_goods_small-item2"--%>
+						<%--title="八马茶业 福鼎白茶(白牡丹）62.5g*2" target="_blank"><img--%>
+							<%--class="lazy"--%>
+							<%--src="/images/html/042cc65a4fb9899878f2f37235ca1793.jpg"--%>
+							<%--style="display: inline;"></a>--%>
+					<%--<div class="gBtn p-btn bbtn" style="top: 210px;">--%>
+							<%--<a pid="219085"--%>
+								<%--data_url="http://p02.e3mall.cn/2016/1500219085/middle_1500219085_1_1/160x160.jpg"--%>
+								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
+						<%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_219085_1">--%>
+							<%--<span><sup>￥</sup></span>75--%>
+						<%--</div></li>--%>
+					<%--<li class="price_list0" goods="55213" eid="b_55213_1"--%>
+						<%--id="cx_b_55213_1"><a--%>
+						<%--href="http://www.e3mall.cn/html/products/56/1400055213.html#trackref=sfbest_hp_hp_goods_small-item3"--%>
+						<%--title="爱之湾 桃红莫斯卡托甜起泡酒 750ml" target="_blank"><img class="lazy"--%>
+							<%--data="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"--%>
+							<%--alt="爱之湾 桃红莫斯卡托甜起泡酒 750ml"--%>
+							<%--src="/images/goods/c11e0d59289782b09ea1cbcb98070017.jpg"--%>
+							<%--style="display: inline;"></a>--%>
+					<%--<div class="gBtn p-btn bbtn">--%>
+							<%--<a pid="55213"--%>
+								<%--data_url="http://p02.e3mall.cn/2014/1400055213/middle_1400055213_1_1/160x160.jpg"--%>
+								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
+						<%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_55213_1">--%>
+							<%--<span><sup>￥</sup></span>38.5--%>
+						<%--</div></li>--%>
+					<%--<li class="price_list0" goods="167461" eid="b_167461_1"--%>
+						<%--id="cx_b_167461_1"><a--%>
+						<%--href="http://www.e3mall.cn/html/products/168/1300167461.html#trackref=sfbest_hp_hp_goods_small-item4"--%>
+						<%--title="北纯  有机绿豆 1kg" target="_blank"><img class="lazy"--%>
+							<%--data="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"--%>
+							<%--alt="北纯  有机绿豆 1kg"--%>
+							<%--src="/images/goods/7cc96c14e10f6ed8db28b4b1efdfdb07.jpg"--%>
+							<%--style="display: inline;"></a>--%>
+					<%--<div class="gBtn p-btn bbtn">--%>
+							<%--<a pid="167461"--%>
+								<%--data_url="http://p02.e3mall.cn/2015/1300167461/middle_1300167461_1_1/160x160.jpg"--%>
+								<%--href="javascript:void(0)" indexflag="1">加入购物车</a>--%>
+						<%--</div>--%>
+						<%--<div class="bprice" id="priceK_b_167461_1">--%>
+							<%--<span><sup>￥</sup></span>22.2--%>
+						<%--</div></li>--%>
 				</ul>
 			</div>   
 	<!-- 口碑甄选 end --> 

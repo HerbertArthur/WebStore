@@ -3,6 +3,8 @@ package com.webstore.service;
 
 import com.webstore.domain.User;
 
+import java.util.List;
+
 public interface UserService {
 
     void userRegister(User user);
@@ -14,5 +16,7 @@ public interface UserService {
      * @return
      */
     User userLogin(String userName, String password);
+
+    List<User> getAllUser();
 
 }

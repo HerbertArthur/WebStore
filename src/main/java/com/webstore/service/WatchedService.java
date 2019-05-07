@@ -1,7 +1,10 @@
 package com.webstore.service;
 
 import com.github.pagehelper.PageInfo;
+import com.webstore.domain.FPGWatched;
 import com.webstore.domain.Watched;
+
+import java.util.List;
 
 public interface WatchedService {
 
@@ -13,4 +16,6 @@ public interface WatchedService {
      * @return
      */
     PageInfo<Watched> selectHistoryByUser(Long userId, int currentPage, int pageSize);
+
+    List<FPGWatched> getDailyWatchedByuId(Long uId);
 }

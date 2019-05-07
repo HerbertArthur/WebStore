@@ -104,10 +104,10 @@
   </delete>
   <insert id="insert" parameterType="com.webstore.domain.ItemCat" >
     insert into item_cat (id, parent_id, name, 
-      status, sort_order, is_parent, 
+      status, sort_order, is_parent,
       created, updated)
     values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT}, 
+      #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT},
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.webstore.domain.ItemCat" >

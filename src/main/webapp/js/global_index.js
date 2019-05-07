@@ -2705,27 +2705,48 @@ $(function(){
   let ctx = $('#ctxValue').val();
   $.ajax({
       type : 'post',
-	  async : false,
+	  // async : false,
+	  data : {
+      	userId : $('#userId_input').val()
+	  },
       url : ctx+'/item/showSelectedItem.do',
       success: function (data) {
           let htmlStr = '';
+          let htmlStr1 = '';
           for (let i in data){
-              // alert("path:"+data[i].iconPath+'>>id:'+data[i].itemId);
-              if (i > 3)break;
-              htmlStr += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
-                  '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
-                  '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
-                  '  </a>' +
-                  '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
-                  '    <a id="add_shoppingCart" pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
-                  '      href="javascript:void(0)" indexflag="1">加入购物车</a>' +
-                  '  </div>' +
-                  '  <div class="bprice" id="priceK_b_215383_0">' +
-                  '    <span><sup>￥</sup></span>' + data[i].price +
-                  '  </div>' +
-                  '</li>');
+              if (i > 7){
+              	break;
+              }
+              if (i <= 3){
+                  htmlStr += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
+                      '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
+                      '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
+                      '  </a>' +
+                      '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
+                      '    <a id="add_shoppingCart" pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
+                      '      href="javascript:void(0)" indexflag="1">加入购物车</a>' +
+                      '  </div>' +
+                      '  <div class="bprice" id="priceK_b_215383_0">' +
+                      '    <span><sup>￥</sup></span>' + data[i].price +
+                      '  </div>' +
+                      '</li>');
+			  } else {
+                  htmlStr1 += ('<li class="price_list0" goods="215383" eid="b_215383_0" id="cx_b_215383_0">' +
+                      '  <a href="#" title="'+ data[i].itemName+ '" target="_blank">' +
+                      '    <img class="lazy" src="/upload/'+ data[i].iconPath +'" style="display: inline;">' +
+                      '  </a>' +
+                      '  <div class="gBtn p-btn bbtn" style="top: 260px;">' +
+                      '    <a id="add_shoppingCart" pid="215383" data_url="http://p02.e3mall.cn/2016/1800215383/middle_1800215383_1_1/160x160.jpg"' +
+                      '      href="javascript:void(0)" indexflag="1">加入购物车</a>' +
+                      '  </div>' +
+                      '  <div class="bprice" id="priceK_b_215383_0">' +
+                      '    <span><sup>￥</sup></span>' + data[i].price +
+                      '  </div>' +
+                      '</li>');
+			  }
           }
           $("#bigPerfect").html(htmlStr);
+          $('#smallPerfect').html(htmlStr1);
           $(".bbig li").each(function(){
               $(this).sfHover({
                   hoverEvent: function(){

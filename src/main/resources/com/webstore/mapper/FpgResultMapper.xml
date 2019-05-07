@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.webstore.dao.WatchedMapper" >
-  <resultMap id="BaseResultMap" type="com.webstore.domain.Watched" >
+<mapper namespace="com.webstore.dao.FpgResultMapper" >
+  <resultMap id="BaseResultMap" type="com.webstore.domain.FpgResult" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="item_id" property="itemId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="associate_items" property="associateItems" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,29 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, item_id, user_id, created
+    id, user_id, associate_items, value
   </sql>
-
-
-  <!--start；自己写的sql-->
-  <resultMap id="FPGResultMap" type="com.webstore.domain.FPGWatched" >
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="itemIds" property="itemIds" jdbcType="VARCHAR" />
-  </resultMap>
-  <select id="selectDistinctWatched" resultMap="FPGResultMap" parameterType="java.lang.Long">
-    SELECT user_id,GROUP_CONCAT(item_id SEPARATOR ';') AS itemIds FROM watched WHERE user_id = #{userId, jdbcType=BIGINT}
-      GROUP BY DATE_FORMAT(created, '%Y-%m-%d'),user_id;
-  </select>
-  <!--end-->
-
-
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.WatchedExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.webstore.domain.FpgResultExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from watched
+    from fpg_result
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,76 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from watched
+    from fpg_result
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from watched
+    delete from fpg_result
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.webstore.domain.WatchedExample" >
-    delete from watched
+  <delete id="deleteByExample" parameterType="com.webstore.domain.FpgResultExample" >
+    delete from fpg_result
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.webstore.domain.Watched" >
-    insert into watched (id, item_id, user_id, 
-      created)
-    values (#{id,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
-      #{created,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.webstore.domain.FpgResult" >
+    insert into fpg_result (id, user_id, associate_items, 
+      value)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{associateItems,jdbcType=VARCHAR}, 
+      #{value,jdbcType=DOUBLE})
   </insert>
-  <insert id="insertSelective" parameterType="com.webstore.domain.Watched" >
-    insert into watched
+  <insert id="insertSelective" parameterType="com.webstore.domain.FpgResult" >
+    insert into fpg_result
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="itemId != null" >
-        item_id,
-      </if>
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="created != null" >
-        created,
+      <if test="associateItems != null" >
+        associate_items,
+      </if>
+      <if test="value != null" >
+        value,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="itemId != null" >
-        #{itemId,jdbcType=BIGINT},
-      </if>
       <if test="userId != null" >
         #{userId,jdbcType=BIGINT},
       </if>
-      <if test="created != null" >
-        #{created,jdbcType=TIMESTAMP},
+      <if test="associateItems != null" >
+        #{associateItems,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.webstore.domain.WatchedExample" resultType="java.lang.Integer" >
-    select count(*) from watched
+  <select id="countByExample" parameterType="com.webstore.domain.FpgResultExample" resultType="java.lang.Integer" >
+    select count(*) from fpg_result
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update watched
+    update fpg_result
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.itemId != null" >
-        item_id = #{record.itemId,jdbcType=BIGINT},
-      </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
-      <if test="record.created != null" >
-        created = #{record.created,jdbcType=TIMESTAMP},
+      <if test="record.associateItems != null" >
+        associate_items = #{record.associateItems,jdbcType=VARCHAR},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -176,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update watched
+    update fpg_result
     set id = #{record.id,jdbcType=BIGINT},
-      item_id = #{record.itemId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
-      created = #{record.created,jdbcType=TIMESTAMP}
+      associate_items = #{record.associateItems,jdbcType=VARCHAR},
+      value = #{record.value,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.Watched" >
-    update watched
+  <update id="updateByPrimaryKeySelective" parameterType="com.webstore.domain.FpgResult" >
+    update fpg_result
     <set >
-      <if test="itemId != null" >
-        item_id = #{itemId,jdbcType=BIGINT},
-      </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
       </if>
-      <if test="created != null" >
-        created = #{created,jdbcType=TIMESTAMP},
+      <if test="associateItems != null" >
+        associate_items = #{associateItems,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DOUBLE},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.webstore.domain.Watched" >
-    update watched
-    set item_id = #{itemId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      created = #{created,jdbcType=TIMESTAMP}
+  <update id="updateByPrimaryKey" parameterType="com.webstore.domain.FpgResult" >
+    update fpg_result
+    set user_id = #{userId,jdbcType=BIGINT},
+      associate_items = #{associateItems,jdbcType=VARCHAR},
+      value = #{value,jdbcType=DOUBLE}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

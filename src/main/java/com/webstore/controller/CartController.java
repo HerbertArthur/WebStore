@@ -1,8 +1,6 @@
 package com.webstore.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.webstore.domain.Cart;
-import com.webstore.domain.Item;
 import com.webstore.service.CartService;
 import com.webstore.service.ItemService;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -49,12 +46,12 @@ public class CartController {
 			cart1.setItemId(itemId);
 			cart1.setItemNum(counts);
 
-			cartService.addShoppingCar(cart1, itemService.findItemById(itemId).getPrice());
+			cartService.addShoppingCar(cart1, itemService.getItemById(itemId).getPrice());
 
 		}
 		else{
 			cart.setItemNum(cart.getItemNum()+counts);
-			double price = itemService.findItemById(itemId).getPrice();
+			double price = itemService.getItemById(itemId).getPrice();
 			cartService.updateShoppingCar(cart, price);
 
 		}

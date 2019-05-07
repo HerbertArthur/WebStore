@@ -18,6 +18,7 @@
                         </div>
                     </li>
                 </span>
+                <input style="display: none;" id="userId_input" value="${user.userId}"/>
             </c:if>
             <c:if test="${null == user}">
                  <span id="loginbar" style="margin-right: 15px;">

@@ -1,7 +1,9 @@
 package com.webstore.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.webstore.domain.FpgResult;
 import com.webstore.domain.Item;
+import com.webstore.service.FpgResultService;
 import com.webstore.service.ItemService;
 import com.webstore.utils.CommUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -18,14 +22,44 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    @Autowired
+    private FpgResultService fpgResultService;
+
     /**
-     * 首页“口碑甄选”推荐的商品
+     * 首页“口碑甄选”推荐的商品,根据聚类和关联得到
      * @return
      */
     @RequestMapping("/showSelectedItem")
     @ResponseBody
-    public List<Item> showSelectedItem(){
-        return itemService.getRecommendItem();
+    public List<Item> showSelectedItem(Long userId, Integer size){
+        size = 8;
+        Long uId = 1001l;
+        if (null != userId){
+            uId = userId;
+        }
+        List<FpgResult> fpgRByuIdList = fpgResultService.getFpgRByuId(uId);
+        ArrayList<Long> itemIdList = new ArrayList<>();
+        for (FpgResult fpgResult : fpgRByuIdList) {
+            String associateItems = fpgResult.getAssociateItems();
+            String[] items = associateItems.split(";");
+            for (int i = 0; i < items.length; ++i){
+                long id = Long.parseLong(items[i]);
+                if (!itemIdList.contains(id)){
+                    itemIdList.add(id);
+                }
+            }
+            if (itemIdList.size() > size){
+                break;
+            }
+        }
+        ArrayList<Item> itemList = new ArrayList<>();
+        for (Long itemId : itemIdList) {
+            Item item = itemService.getItemById(itemId);
+            if (null != item){
+                itemList.add(itemService.getItemById(itemId));
+            }
+        }
+        return itemList;
     }
 
     /**
@@ -62,7 +96,7 @@ public class ItemController {
 
     @RequestMapping("test")
     public void test(){
-        Item item = itemService.findItemById(69l);
+        Item item = itemService.getItemById(69l);
         System.out.println(item.getPrice());
 
     }
